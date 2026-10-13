@@ -19,42 +19,42 @@ export default function Portfolio() {
       category: 'branding',
       description: t('portfolio.items.project1.description'),
       image: 'https://readdy.ai/api/search-image?query=Professional%20completed%20brand%20identity%20project%20showing%20custom%20logo%20design%20applied%20across%20multiple%20branded%20materials%2C%20business%20cards%20with%20embossed%20logo%2C%20letterhead%20stationery%2C%20brand%20color%20palette%20swatches%2C%20custom%20icon%20set%20designs%20displayed%20on%20presentation%20boards%2C%20finished%20brand%20style%20guide%20book%2C%20cohesive%20visual%20identity%20system%20photographed%20on%20elegant%20desk%2C%20real%20delivered%20branding%20project%20with%20all%20identity%20elements%20visible%2C%20high%20quality%20photography%20of%20actual%20brand%20identity%20deliverables&width=900&height=700&seq=portfolio-brand-identity-complete-system-001&orientation=landscape',
-      tags: ['Logo', 'Paleta Color', 'Iconografía']
+      tags: (t('portfolio.items.project1.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project2.title'),
       category: 'digital',
       description: t('portfolio.items.project2.description'),
       image: 'https://readdy.ai/api/search-image?query=Real%20completed%20fashion%20e-commerce%20website%20displayed%20on%20MacBook%20Pro%20screen%20showing%20actual%20live%20website%20with%20product%20listings%20and%20shopping%20cart%2C%20professional%20photography%20of%20finished%20web%20design%20project%2C%20authentic%20user%20interface%20with%20real%20fashion%20products%20and%20working%20checkout%20system%2C%20modern%20workspace%20setting%20with%20natural%20lighting%2C%20high%20quality%20photograph%20of%20actual%20delivered%20digital%20project&width=900&height=700&seq=portfolio-real-002&orientation=landscape',
-      tags: ['Web App', 'UX/UI', 'E-commerce']
+      tags: (t('portfolio.items.project2.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project3.title'),
       category: 'audiovisual',
       description: t('portfolio.items.project3.description'),
       image: 'https://readdy.ai/api/search-image?query=Real%20finished%20restaurant%20promotional%20video%20displayed%20on%20tablet%20and%20smartphone%20screens%20showing%20actual%20completed%20commercial%20footage%20with%20professional%20food%20cinematography%2C%20authentic%20delivered%20audiovisual%20content%20with%20high%20production%20value%2C%20finished%20video%20campaign%20materials%20photographed%20in%20modern%20setting%2C%20professional%20photography%20of%20actual%20completed%20video%20production%20project%20with%20visible%20playback%20on%20devices&width=900&height=700&seq=portfolio-real-003&orientation=landscape',
-      tags: ['Video LED', 'Fotografía', 'Redes']
+      tags: (t('portfolio.items.project3.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project4.title'),
       category: 'spaces',
       description: t('portfolio.items.project4.description'),
       image: '/images/illuminated-signage.png',
-      tags: ['Rótulos LED', 'Iluminación', 'Fachadas']
+      tags: (t('portfolio.items.project4.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project5.title'),
       category: 'branding',
       description: t('portfolio.items.project5.description'),
       image: '/images/branding-pyme.jpg',
-      tags: ['Logo', 'Wraps', 'Packaging']
+      tags: (t('portfolio.items.project5.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project6.title'),
       category: 'spaces',
       description: t('portfolio.items.project6.description'),
       image: '/images/digital-content-led.jpg',
-      tags: ['LED', 'Video', 'Retail']
+      tags: (t('portfolio.items.project6.tags', { returnObjects: true }) as string[])
     }
   ];
 

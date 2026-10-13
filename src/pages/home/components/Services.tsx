@@ -1,40 +1,48 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 export default function Services() {
   const { t } = useTranslation('common');
+  const navigate = useNavigate();
 
   const services = [
     {
       icon: 'ri-palette-line',
       title: t('services.items.branding.title'),
       description: t('services.items.branding.description'),
-      image: 'https://readdy.ai/api/search-image?query=Professional%20brand%20identity%20design%20process%20with%20logo%20sketches%2C%20color%20palettes%2C%20typography%20samples%2C%20and%20brand%20guidelines%20on%20a%20modern%20designer%20desk%2C%20creative%20workspace%20with%20turquoise%20accents%2C%20minimalist%20aesthetic%2C%20high-quality%20professional%20photography&width=600&height=400&seq=service-001&orientation=landscape'
+      image: 'https://readdy.ai/api/search-image?query=Professional%20brand%20identity%20design%20process%20with%20logo%20sketches%2C%20color%20palettes%2C%20typography%20samples%2C%20and%20brand%20guidelines%20on%20a%20modern%20designer%20desk%2C%20creative%20workspace%20with%20turquoise%20accents%2C%20minimalist%20aesthetic%2C%20high-quality%20professional%20photography&width=600&height=400&seq=service-001&orientation=landscape',
+      route: '/servicios/identidad-de-marca'
     },
     {
       title: t('services.items.graphic.title'),
       description: t('services.items.graphic.description'),
       image: '/images/graphic-design.jpg',
-      featured: true
+      featured: true,
+      route: '/servicios/diseno-grafico'
     },
     {
       title: t('services.items.digital.title'),
       description: t('services.items.digital.description'),
-      image: '/images/digital-solutions.jpg'
+      image: '/images/digital-solutions.jpg',
+      route: '/servicios/soluciones-digitales'
     },
     {
       title: t('services.items.audiovisual.title'),
       description: t('services.items.audiovisual.description'),
-      image: '/images/audiovisual-production.jpg?v=2'
+      image: '/images/audiovisual-production.jpg?v=2',
+      route: '/servicios/produccion-audiovisual'
     },
     {
       title: t('services.items.prepress.title'),
       description: t('services.items.prepress.description'),
-      image: 'https://readdy.ai/api/search-image?query=Professional%20pre-press%20production%20workspace%20with%20color%20calibration%20tools%2C%20print%20samples%2C%20technical%20specifications%2C%20modern%20printing%20studio%2C%20clean%20organized%20environment%2C%20professional%20printing%20materials%2C%20contemporary%20production%20facility%20with%20quality%20control%20setup&width=800&height=600&seq=service-005&orientation=landscape'
+      image: 'https://readdy.ai/api/search-image?query=Professional%20pre-press%20production%20workspace%20with%20color%20calibration%20tools%2C%20print%20samples%2C%20technical%20specifications%2C%20modern%20printing%20studio%2C%20clean%20organized%20environment%2C%20professional%20printing%20materials%2C%20contemporary%20production%20facility%20with%20quality%20control%20setup&width=800&height=600&seq=service-005&orientation=landscape',
+      route: '/servicios/pre-prensa'
     },
     {
       title: t('services.items.led.title'),
       description: t('services.items.led.description'),
-      image: '/images/led-screens.jpg'
+      image: '/images/led-screens.jpg',
+      route: '/servicios/pantallas-led'
     }
   ];
 
@@ -57,7 +65,8 @@ export default function Services() {
           {services.map((service, index) => (
             <article
               key={index}
-              className={`group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col ${service.featured
+              onClick={() => navigate(service.route)}
+              className={`group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col cursor-pointer ${service.featured
                 ? 'border-[#26A3AD]/50 dark:border-[#4EFFEF]/50 ring-2 ring-[#26A3AD]/20 dark:ring-[#4EFFEF]/20'
                 : 'border-gray-100 dark:border-gray-800 hover:border-transparent dark:hover:border-transparent'
                 }`}

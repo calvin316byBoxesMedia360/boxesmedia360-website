@@ -1,34 +1,46 @@
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
+import Modal from '../../../components/Modal';
 
 export default function ValueProposition() {
   const { t } = useTranslation('common');
-  
+  const [selectedBenefit, setSelectedBenefit] = useState<number | null>(null);
+
   const benefits = [
     {
       icon: 'ri-flashlight-line',
       title: t('valueProposition.features.speed.title'),
       description: t('valueProposition.features.speed.description'),
-      image: 'https://readdy.ai/api/search-image?query=Dynamic%20speed%20motion%20blur%20effect%20with%20rocket%20launching%20upward%2C%20fast%20acceleration%20concept%20with%20vibrant%20energy%20trails%2C%20modern%20minimalist%20design%20with%20turquoise%20and%20teal%20gradient%20colors%2C%20professional%20business%20velocity%20visualization%2C%20clean%20contemporary%20aesthetic%2C%20high%20impact%20visual%20representing%20rapid%20growth%20and%20momentum%2C%20abstract%20speed%20lines%20and%20forward%20movement&width=400&height=400&seq=benefit-speed-radical-001&orientation=squarish'
+      image: 'https://readdy.ai/api/search-image?query=Dynamic%20speed%20motion%20blur%20effect%20with%20rocket%20launching%20upward%2C%20fast%20acceleration%20concept%20with%20vibrant%20energy%20trails%2C%20modern%20minimalist%20design%20with%20turquoise%20and%20teal%20gradient%20colors%2C%20professional%20business%20velocity%20visualization%2C%20clean%20contemporary%20aesthetic%2C%20high%20impact%20visual%20representing%20rapid%20growth%20and%20momentum%2C%20abstract%20speed%20lines%20and%20forward%20movement&width=400&height=400&seq=benefit-speed-radical-001&orientation=squarish',
+      modalKey: 'speed'
     },
     {
       icon: 'ri-stack-line',
       title: t('valueProposition.features.contact.title'),
       description: t('valueProposition.features.contact.description'),
-      image: 'https://readdy.ai/api/search-image?query=Interconnected%20geometric%20shapes%20forming%20unified%20system%2C%20puzzle%20pieces%20perfectly%20aligned%20in%20turquoise%20gradient%2C%20complete%20integrated%20solution%20visualization%2C%20modern%20minimalist%20design%20with%20clean%20lines%2C%20professional%20business%20unity%20concept%2C%20contemporary%20aesthetic%20showing%20seamless%20connection%20and%20harmony%2C%20abstract%20representation%20of%20all-in-one%20service&width=400&height=400&seq=benefit-integration-unified-002&orientation=squarish'
+      image: 'https://readdy.ai/api/search-image?query=Interconnected%20geometric%20shapes%20forming%20unified%20system%2C%20puzzle%20pieces%20perfectly%20aligned%20in%20turquoise%20gradient%2C%20complete%20integrated%20solution%20visualization%2C%20modern%20minimalist%20design%20with%20clean%20lines%2C%20professional%20business%20unity%20concept%2C%20contemporary%20aesthetic%20showing%20seamless%20connection%20and%20harmony%2C%20abstract%20representation%20of%20all-in-one%20service&width=400&height=400&seq=benefit-integration-unified-002&orientation=squarish',
+      modalKey: 'contact'
     },
     {
       icon: 'ri-ai-generate',
-      title: 'Flujos Acelerados por IA',
-      description: 'Tecnología de vanguardia para producir ediciones profesionales de video y campañas audiovisuales en tiempo récord.',
-      image: 'https://readdy.ai/api/search-image?query=Futuristic%20AI%20neural%20network%20visualization%20with%20glowing%20nodes%20and%20connections%2C%20artificial%20intelligence%20brain%20concept%20in%20turquoise%20and%20teal%20colors%2C%20modern%20tech%20innovation%20with%20digital%20particles%2C%20professional%20cutting-edge%20technology%20imagery%2C%20clean%20minimalist%20design%20with%20cyber%20aesthetic%2C%20abstract%20representation%20of%20machine%20learning%20and%20automation%20power&width=400&height=400&seq=benefit-ai-advanced-003&orientation=squarish'
+      title: t('valueProposition.features.ai.title'),
+      description: t('valueProposition.features.ai.description'),
+      image: 'https://readdy.ai/api/search-image?query=Futuristic%20AI%20neural%20network%20visualization%20with%20glowing%20nodes%20and%20connections%2C%20artificial%20intelligence%20brain%20concept%20in%20turquoise%20and%20teal%20colors%2C%20modern%20tech%20innovation%20with%20digital%20particles%2C%20professional%20cutting-edge%20technology%20imagery%2C%20clean%20minimalist%20design%20with%20cyber%20aesthetic%2C%20abstract%20representation%20of%20machine%20learning%20and%20automation%20power&width=400&height=400&seq=benefit-ai-advanced-003&orientation=squarish',
+      modalKey: 'ai'
     },
     {
       icon: 'ri-palette-line',
-      title: 'Coherencia Estética',
-      description: 'Del diseño digital a la implementación física con precisión técnica impecable. Tu marca siempre perfecta en cada medio.',
-      image: 'https://readdy.ai/api/search-image?query=Perfect%20color%20palette%20harmony%20with%20gradient%20swatches%20arranged%20in%20elegant%20composition%2C%20brand%20consistency%20visualization%20with%20turquoise%20teal%20and%20complementary%20colors%2C%20modern%20minimalist%20design%20aesthetic%2C%20professional%20design%20coherence%20concept%2C%20clean%20contemporary%20style%20showing%20visual%20unity%20across%20multiple%20formats%2C%20abstract%20representation%20of%20flawless%20brand%20execution&width=400&height=400&seq=benefit-aesthetic-perfect-004&orientation=squarish'
+      title: t('valueProposition.features.aesthetic.title'),
+      description: t('valueProposition.features.aesthetic.description'),
+      image: 'https://readdy.ai/api/search-image?query=Perfect%20color%20palette%20harmony%20with%20gradient%20swatches%20arranged%20in%20elegant%20composition%2C%20brand%20consistency%20visualization%20with%20turquoise%20teal%20and%20complementary%20colors%2C%20modern%20minimalist%20design%20aesthetic%2C%20professional%20design%20coherence%20concept%2C%20clean%20contemporary%20style%20showing%20visual%20unity%20across%20multiple%20formats%2C%20abstract%20representation%20of%20flawless%20brand%20execution&width=400&height=400&seq=benefit-aesthetic-perfect-004&orientation=squarish',
+      modalKey: 'aesthetic'
     }
   ];
+
+  const getModalContent = (modalKey: string) => {
+    const feature = (t as any)(`valueProposition.features.${modalKey}.modalContent`, { returnObjects: true });
+    return feature;
+  };
 
   return (
     <section id="propuesta" className="py-20 md:py-32 bg-gray-50 dark:bg-[#1a1d1d] transition-colors duration-300">
@@ -53,32 +65,91 @@ export default function ValueProposition() {
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] transition-all duration-500 hover:shadow-2xl cursor-pointer"
+              onClick={() => setSelectedBenefit(index)}
+              className="group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] transition-all duration-500 hover:shadow-2xl cursor-pointer hover:scale-[1.02]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
-                <img 
-                  src={benefit.image} 
+                <img
+                  src={benefit.image}
                   alt={benefit.title}
                   title={benefit.title}
                   className="w-full h-full object-cover"
                 />
               </div>
-              
+
               <div className="relative p-6 sm:p-8 md:p-10">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#26A3AD] to-[#4EFFEF] flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                   <i className={`${benefit.icon} text-2xl sm:text-3xl text-white`}></i>
                 </div>
-                
+
                 <h4 className="text-xl sm:text-2xl font-bold text-[#2D3232] dark:text-white mb-3 sm:mb-4" style={{ fontFamily: '"Syne", sans-serif' }}>
                   {benefit.title}
                 </h4>
-                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                   {benefit.description}
                 </p>
+
+                <div className="flex items-center gap-2 text-[#26A3AD] dark:text-[#4EFFEF] font-semibold group-hover:gap-3 transition-all duration-300">
+                  <span className="text-sm">{t('common.learnMore')}</span>
+                  <i className="ri-arrow-right-line text-lg"></i>
+                </div>
               </div>
             </div>
           ))}
         </div>
+
+        {/* Modal */}
+        {selectedBenefit !== null && (
+          <Modal
+            isOpen={true}
+            onClose={() => setSelectedBenefit(null)}
+            title={benefits[selectedBenefit].title}
+            icon={benefits[selectedBenefit].icon}
+          >
+            {(() => {
+              const modalContent = getModalContent(benefits[selectedBenefit].modalKey);
+              return (
+                <div className="space-y-6">
+                  <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
+                    {modalContent.subtitle}
+                  </p>
+
+                  <div className="space-y-4">
+                    {modalContent.benefits.map((item: any, idx: number) => (
+                      <div
+                        key={idx}
+                        className="bg-gray-50 dark:bg-[#1a1d1d] rounded-2xl p-5 border border-gray-200 dark:border-gray-700"
+                      >
+                        <h5 className="text-lg font-bold text-[#2D3232] dark:text-white mb-2 flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF]"></div>
+                          {item.title}
+                        </h5>
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Stats Card */}
+                  <div className="bg-gradient-to-br from-[#26A3AD] to-[#4EFFEF] rounded-2xl p-6 text-white">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="text-sm opacity-90 mb-1">{modalContent.stats.label}</p>
+                        <p className="text-4xl font-bold" style={{ fontFamily: '"Syne", sans-serif' }}>
+                          {modalContent.stats.value}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm opacity-90">{modalContent.stats.comparison}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+          </Modal>
+        )}
 
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="relative order-2 lg:order-1">

@@ -9,28 +9,32 @@ export default function Process() {
       title: t('process.steps.discovery.title'),
       description: t('process.steps.discovery.description'),
       icon: 'ri-discuss-line',
-      color: 'from-[#4EFFEF] to-[#26A3AD]'
+      color: 'from-[#4EFFEF] to-[#26A3AD]',
+      image: '/images/process-discovery.png'
     },
     {
       number: '02',
       title: t('process.steps.strategy.title'),
       description: t('process.steps.strategy.description'),
       icon: 'ri-file-list-3-line',
-      color: 'from-[#26A3AD] to-[#E2B679]'
+      color: 'from-[#26A3AD] to-[#E2B679]',
+      image: '/images/process-strategy.png'
     },
     {
       number: '03',
       title: t('process.steps.design.title'),
       description: t('process.steps.design.description'),
       icon: 'ri-palette-line',
-      color: 'from-[#E2B679] to-[#4EFFEF]'
+      color: 'from-[#E2B679] to-[#4EFFEF]',
+      image: '/images/process-design.png'
     },
     {
       number: '04',
       title: t('process.steps.production.title'),
       description: t('process.steps.production.description'),
       icon: 'ri-rocket-line',
-      color: 'from-[#4EFFEF] to-[#26A3AD]'
+      color: 'from-[#4EFFEF] to-[#26A3AD]',
+      image: '/images/process-production.png'
     }
   ];
 
@@ -58,12 +62,22 @@ export default function Process() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-[#2D3232] rounded-3xl p-6 sm:p-8 border border-gray-200 dark:border-gray-800 hover:border-transparent dark:hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
+              className="group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-transparent dark:hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500`}></div>
+              {/* Background Image */}
+              <div className="absolute inset-0 overflow-hidden">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-full object-cover opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                />
+              </div>
 
-              <div className="relative">
-                <div className={`inline-flex w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${step.color} items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              {/* Gradient Overlay */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+
+              <div className="relative p-6 sm:p-8">
+                <div className={`inline-flex w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${step.color} items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse group-hover:animate-none`}>
                   <i className={`${step.icon} text-2xl sm:text-3xl text-white`}></i>
                 </div>
 
@@ -75,9 +89,15 @@ export default function Process() {
                   {step.title}
                 </h4>
 
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
                   {step.description}
                 </p>
+
+                {/* Visual hint for interaction */}
+                <div className="flex items-center gap-2 text-[#26A3AD] dark:text-[#4EFFEF] text-xs sm:text-sm font-medium opacity-60 group-hover:opacity-0 transition-opacity">
+                  <i className="ri-hand-coin-line"></i>
+                  <span>{t('common.tapToSeeMore') || 'Tap to see more'}</span>
+                </div>
               </div>
 
               {index < steps.length - 1 && (

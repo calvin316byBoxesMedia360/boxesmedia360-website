@@ -75,7 +75,7 @@ export default function Footer() {
         <div className="pt-6 sm:pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
-              © 2024 BoxesMedia360. {t('footer.rights')}
+              © 2025 BoxesMedia360. {t('footer.rights')}
             </p>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
               <a href="#" className="text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">Privacidad</a>

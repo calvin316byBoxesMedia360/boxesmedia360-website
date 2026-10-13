@@ -8,6 +8,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const languageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -127,8 +128,30 @@ export default function Navigation() {
                   : 'bg-white/20 text-white hover:bg-white/30'
                   }`}
                 aria-label="Toggle dark mode"
+                title={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
               >
-                <i className={`${isDark ? 'ri-sun-line' : 'ri-moon-line'} text-xl`}></i>
+                {isDark ? (
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                  </svg>
+                )}
+              </button>
+
+              {/* Hamburger Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`p-2 rounded-full transition-all hover:scale-110 cursor-pointer ${isScrolled
+                  ? 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+                  : 'bg-white/20 text-white hover:bg-white/30'
+                  }`}
+                aria-label="Toggle menu"
+                title="Menú de navegación"
+              >
+                <i className={`text-xl transition-transform ${isMobileMenuOpen ? 'ri-close-line' : 'ri-menu-line'}`}></i>
               </button>
 
               {/* Language Selector */}
@@ -140,9 +163,41 @@ export default function Navigation() {
                     : 'bg-white/20 hover:bg-white/30'
                     }`}
                   aria-label="Select language"
+                  title="Cambiar idioma"
                 >
-                  <i className={`ri-global-line text-lg ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
-                    }`}></i>
+                  {/* Flag SVG */}
+                  {currentLanguage === 'es' ? (
+                    <svg className="w-5 h-4" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                      <rect fill="#c60b1e" width="900" height="600" />
+                      <rect fill="#ffc400" y="150" width="900" height="300" />
+                    </svg>
+                  ) : (
+                    <svg className="w-5 h-4" viewBox="0 0 7410 3900" xmlns="http://www.w3.org/2000/svg">
+                      <rect fill="#b22234" width="7410" height="3900" />
+                      <path d="M0,450H7410m0,600H0m0,600H7410m0,600H0m0,600H7410m0,600H0" stroke="#fff" strokeWidth="300" />
+                      <rect fill="#3c3b6e" width="2964" height="2100" />
+                      <g fill="#fff">
+                        <g id="s18">
+                          <g id="s9">
+                            <g id="s5">
+                              <g id="s4">
+                                <path id="s" d="M247,90 317.534230,307.082039 132.873218,172.917961H361.126782L176.465770,307.082039z" />
+                                <use xlinkHref="#s" y="420" />
+                                <use xlinkHref="#s" y="840" />
+                                <use xlinkHref="#s" y="1260" />
+                              </g>
+                              <use xlinkHref="#s" y="1680" />
+                            </g>
+                            <use xlinkHref="#s4" x="247" y="210" />
+                          </g>
+                          <use xlinkHref="#s9" x="494" />
+                        </g>
+                        <use xlinkHref="#s18" x="988" />
+                        <use xlinkHref="#s9" x="1976" />
+                        <use xlinkHref="#s5" x="2470" />
+                      </g>
+                    </svg>
+                  )}
                   <span className={`text-sm font-semibold uppercase ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
                     }`}>
                     {currentLanguage}
@@ -158,7 +213,10 @@ export default function Navigation() {
                       onClick={() => changeLanguage('es')}
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
                     >
-                      <span className="text-xl">🇪🇸</span>
+                      <svg className="w-5 h-4 flex-shrink-0" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#c60b1e" width="900" height="600" />
+                        <rect fill="#ffc400" y="150" width="900" height="300" />
+                      </svg>
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Español</span>
                       {currentLanguage === 'es' && (
                         <i className="ri-check-line text-teal-500 ml-auto"></i>
@@ -168,7 +226,31 @@ export default function Navigation() {
                       onClick={() => changeLanguage('en')}
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer"
                     >
-                      <span className="text-xl">🇺🇸</span>
+                      <svg className="w-5 h-4 flex-shrink-0" viewBox="0 0 7410 3900" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#b22234" width="7410" height="3900" />
+                        <path d="M0,450H7410m0,600H0m0,600H7410m0,600H0m0,600H7410m0,600H0" stroke="#fff" strokeWidth="300" />
+                        <rect fill="#3c3b6e" width="2964" height="2100" />
+                        <g fill="#fff">
+                          <g id="s18-dropdown">
+                            <g id="s9-dropdown">
+                              <g id="s5-dropdown">
+                                <g id="s4-dropdown">
+                                  <path id="s-dropdown" d="M247,90 317.534230,307.082039 132.873218,172.917961H361.126782L176.465770,307.082039z" />
+                                  <use xlinkHref="#s-dropdown" y="420" />
+                                  <use xlinkHref="#s-dropdown" y="840" />
+                                  <use xlinkHref="#s-dropdown" y="1260" />
+                                </g>
+                                <use xlinkHref="#s-dropdown" y="1680" />
+                              </g>
+                              <use xlinkHref="#s4-dropdown" x="247" y="210" />
+                            </g>
+                            <use xlinkHref="#s9-dropdown" x="494" />
+                          </g>
+                          <use xlinkHref="#s18-dropdown" x="988" />
+                          <use xlinkHref="#s9-dropdown" x="1976" />
+                          <use xlinkHref="#s5-dropdown" x="2470" />
+                        </g>
+                      </svg>
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">English</span>
                       {currentLanguage === 'en' && (
                         <i className="ri-check-line text-teal-500 ml-auto"></i>
@@ -190,6 +272,124 @@ export default function Navigation() {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="fixed top-[72px] left-0 right-0 bg-white dark:bg-gray-900 shadow-2xl z-40 max-h-[calc(100vh-72px)] overflow-y-auto animate-slideDown">
+          <div className="max-w-7xl mx-auto px-6 py-6">
+            <div className="space-y-4">
+              {/* Services Section */}
+              <div>
+                <button
+                  onClick={() => {
+                    scrollToSection('servicios');
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full text-left font-semibold text-lg text-gray-900 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer flex items-center justify-between py-2"
+                >
+                  <span>{t('nav.services')}</span>
+                  <i className="ri-arrow-right-s-line"></i>
+                </button>
+                <div className="pl-4 mt-2 space-y-2 border-l-2 border-teal-500/30">
+                  <button
+                    onClick={() => {
+                      scrollToSection('servicios');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer py-1"
+                  >
+                    {t('services.items.branding.title')}
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection('servicios');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer py-1"
+                  >
+                    {t('services.items.graphic.title')}
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection('servicios');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer py-1"
+                  >
+                    {t('services.items.digital.title')}
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection('servicios');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer py-1"
+                  >
+                    {t('services.items.audiovisual.title')}
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection('servicios');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer py-1"
+                  >
+                    {t('services.items.prepress.title')}
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection('servicios');
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="block w-full text-left text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer py-1"
+                  >
+                    {t('services.items.led.title')}
+                  </button>
+                </div>
+              </div>
+
+              {/* Process Section */}
+              <button
+                onClick={() => {
+                  scrollToSection('proceso');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full text-left font-semibold text-lg text-gray-900 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer flex items-center justify-between py-2"
+              >
+                <span>{t('nav.process')}</span>
+                <i className="ri-arrow-right-s-line"></i>
+              </button>
+
+              {/* Portfolio Section */}
+              <button
+                onClick={() => {
+                  scrollToSection('portafolio');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full text-left font-semibold text-lg text-gray-900 dark:text-white hover:text-teal-500 dark:hover:text-teal-400 transition-colors cursor-pointer flex items-center justify-between py-2"
+              >
+                <span>{t('nav.portfolio')}</span>
+                <i className="ri-arrow-right-s-line"></i>
+              </button>
+
+              {/* Contact Section */}
+              <button
+                onClick={() => {
+                  scrollToSection('contact');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full text-left font-semibold text-lg text-teal-500 dark:text-teal-400 hover:text-teal-600 dark:hover:text-teal-300 transition-colors cursor-pointer flex items-center justify-between py-2 border-t border-gray-200 dark:border-gray-700 pt-4 mt-2"
+              >
+                <span className="flex items-center gap-2">
+                  <i className="ri-mail-line"></i>
+                  {t('nav.contact')}
+                </span>
+                <i className="ri-arrow-right-s-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact Form Modal */}
       {showContactForm && (

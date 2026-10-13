@@ -222,19 +222,19 @@ export default function Scheduling() {
             </div>
 
             {/* Additional Info */}
-            <div className="bg-gradient-to-br from-teal-500 via-blue-500 to-purple-600 rounded-3xl p-8 text-white shadow-xl">
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-xl flex-shrink-0">
-                  <i className="ri-lightbulb-flash-line text-2xl"></i>
+            <div className="bg-gradient-to-br from-teal-500 via-blue-500 to-purple-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-xl flex-shrink-0">
+                  <i className="ri-lightbulb-flash-line text-xl sm:text-2xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-bold text-xl mb-2">
+                  <h4 className="font-bold text-lg sm:text-xl mb-2">
                     {i18n.language === 'es' ? 'Proceso probado' : 'Proven process'}
                   </h4>
-                  <p className="text-white/90 leading-relaxed">
+                  <p className="text-sm sm:text-base text-white/90 leading-relaxed">
                     {i18n.language === 'es'
-                      ? 'Metodología refinada en 100+ marcas que garantiza resultados consistentes y tiempos de entrega predecibles.'
-                      : 'Methodology refined in 100+ brands that guarantees consistent results and predictable delivery times.'}
+                      ? 'Metodología refinada en 50+ proyectos que garantiza resultados consistentes y tiempos de entrega predecibles.'
+                      : 'Methodology refined in 50+ projects that guarantees consistent results and predictable delivery times.'}
                   </p>
                 </div>
               </div>

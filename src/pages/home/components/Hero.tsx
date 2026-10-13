@@ -37,10 +37,10 @@ export default function Hero() {
     {
       id: 'brands',
       icon: 'ri-team-line',
-      value: '100+',
+      value: '25+',
       label: t('hero.stats.brands'),
       title: 'Marcas Confiadas',
-      description: 'Más de 100 marcas han confiado en nosotros para transformar su presencia digital y alcanzar sus objetivos de negocio.',
+      description: 'Más de 25 marcas han confiado en nosotros para transformar su presencia digital y alcanzar sus objetivos de negocio.',
       details: [
         'Startups innovadoras',
         'Empresas consolidadas',
