@@ -33,7 +33,7 @@ export default function LegalPage({ doc }: { doc: 'privacy' | 'terms' }) {
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-10">{content.intro}</p>
         <div className="space-y-8">
           {content.sections.map((section) => (
-            <section key={section.heading} className="bg-paper-soft dark:bg-[#252a2a] rounded-2xl p-6 sm:p-8 border border-[#E2D9C8] dark:border-gray-800">
+            <section key={section.heading} className="bg-paper-soft dark:bg-[#252a2a] rounded-2xl p-6 sm:p-8 border border-[#D3C8B5] dark:border-gray-800">
               <h2 className="text-xl sm:text-2xl font-bold text-[#2D3232] dark:text-white mb-4" style={{ fontFamily: '"Syne", sans-serif' }}>
                 {section.heading}
               </h2>

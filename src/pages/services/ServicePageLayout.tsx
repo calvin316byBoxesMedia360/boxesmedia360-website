@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
+import Footer from '../home/components/Footer';
 
 interface ServicePageLayoutProps {
     serviceNumber: string;
@@ -233,6 +234,8 @@ export default function ServicePageLayout({
                     </div>
                 </div>
             </section>
+
+            <Footer />
         </div>
     );
 }

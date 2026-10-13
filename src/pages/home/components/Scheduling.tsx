@@ -151,7 +151,7 @@ export default function Scheduling() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-teal-500/10 to-blue-500/10 border border-teal-200 dark:border-teal-800 text-teal-600 dark:text-teal-400 rounded-full text-sm font-semibold mb-6">
+          <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#26A3AD]/10 border border-[#26A3AD]/30 dark:border-[#4EFFEF]/30 text-[#1A7F88] dark:text-[#4EFFEF] rounded-full text-sm font-semibold mb-6">
             <i className="ri-message-3-line text-lg"></i>
             {i18n.language === 'es' ? 'Contacto y Agendamiento' : 'Contact & Scheduling'}
           </span>
@@ -180,8 +180,8 @@ export default function Scheduling() {
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-teal-100 to-teal-200 dark:from-teal-900/30 dark:to-teal-800/30 rounded-xl">
-                      <i className="ri-time-line text-2xl text-teal-600 dark:text-teal-400"></i>
+                    <div className="w-12 h-12 flex items-center justify-center bg-[#26A3AD]/15 dark:bg-[#4EFFEF]/10 rounded-xl">
+                      <i className="ri-time-line text-2xl text-[#1A7F88] dark:text-[#4EFFEF]"></i>
                     </div>
                   </div>
                   <div>
@@ -198,8 +198,8 @@ export default function Scheduling() {
 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900/30 dark:to-blue-800/30 rounded-xl">
-                      <i className="ri-shield-check-line text-2xl text-blue-600 dark:text-blue-400"></i>
+                    <div className="w-12 h-12 flex items-center justify-center bg-[#26A3AD]/15 dark:bg-[#4EFFEF]/10 rounded-xl">
+                      <i className="ri-shield-check-line text-2xl text-[#1A7F88] dark:text-[#4EFFEF]"></i>
                     </div>
                   </div>
                   <div>
@@ -216,8 +216,8 @@ export default function Scheduling() {
 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 flex items-center justify-center bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900/30 dark:to-purple-800/30 rounded-xl">
-                      <i className="ri-rocket-line text-2xl text-purple-600 dark:text-purple-400"></i>
+                    <div className="w-12 h-12 flex items-center justify-center bg-[#E2B679]/25 dark:bg-[#E2B679]/15 rounded-xl">
+                      <i className="ri-rocket-line text-2xl text-[#9A6B25] dark:text-[#E2B679]"></i>
                     </div>
                   </div>
                   <div>
@@ -235,7 +235,7 @@ export default function Scheduling() {
             </div>
 
             {/* Additional Info */}
-            <div className="bg-gradient-to-br from-teal-500 via-blue-500 to-purple-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl">
+            <div className="bg-gradient-to-br from-[#1A7F88] to-[#26A3AD] dark:from-[#1c2121] dark:to-[#1A7F88] dark:border dark:border-[#4EFFEF]/20 rounded-3xl p-6 sm:p-8 text-white shadow-xl">
               <div className="flex items-start gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-xl flex-shrink-0">
                   <i className="ri-lightbulb-flash-line text-xl sm:text-2xl"></i>
@@ -263,7 +263,7 @@ export default function Scheduling() {
                   type="button"
                   onClick={() => setContactType('general')}
                   className={`flex-1 px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap cursor-pointer ${contactType === 'general'
-                    ? 'bg-paper-soft dark:bg-gray-800 text-teal-600 dark:text-teal-400 shadow-md'
+                    ? 'bg-paper-soft dark:bg-gray-800 text-[#1A7F88] dark:text-[#4EFFEF] shadow-md'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}
                 >
@@ -274,7 +274,7 @@ export default function Scheduling() {
                   type="button"
                   onClick={() => setContactType('schedule')}
                   className={`flex-1 px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap cursor-pointer ${contactType === 'schedule'
-                    ? 'bg-paper-soft dark:bg-gray-800 text-teal-600 dark:text-teal-400 shadow-md'
+                    ? 'bg-paper-soft dark:bg-gray-800 text-[#1A7F88] dark:text-[#4EFFEF] shadow-md'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}
                 >
@@ -305,7 +305,7 @@ export default function Scheduling() {
                         onChange={handleChange}
                         required
                         placeholder={i18n.language === 'es' ? 'Tu nombre' : 'Your name'}
-                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
+                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                       />
                     </div>
                   </div>
@@ -328,7 +328,7 @@ export default function Scheduling() {
                         onChange={handleChange}
                         required
                         placeholder={i18n.language === 'es' ? 'tu@email.com' : 'your@email.com'}
-                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
+                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                       />
                     </div>
                   </div>
@@ -351,7 +351,7 @@ export default function Scheduling() {
                         onChange={handleChange}
                         required
                         placeholder="+1 (831) 000-0000"
-                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
+                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                       />
                     </div>
                   </div>
@@ -371,7 +371,7 @@ export default function Scheduling() {
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
+                          className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
                         >
                           <option value="">{i18n.language === 'es' ? 'Selecciona un servicio' : 'Select a service'}</option>
                           <option value="branding">{i18n.language === 'es' ? 'Identidad de Marca' : 'Brand Identity'}</option>
@@ -399,10 +399,10 @@ export default function Scheduling() {
                             name="immediateContact"
                             checked={formData.immediateContact}
                             onChange={handleChange}
-                            className="w-5 h-5 text-teal-500 border-2 border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-teal-500 cursor-pointer transition-all"
+                            className="w-5 h-5 text-[#26A3AD] border-2 border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-[#26A3AD] cursor-pointer transition-all"
                           />
                         </div>
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-[#1A7F88] dark:group-hover:text-[#4EFFEF] transition-colors">
                           <i className="ri-flashlight-line mr-1"></i>
                           {i18n.language === 'es' ? 'Prefiero contacto inmediato' : 'I prefer immediate contact'}
                         </span>
@@ -429,7 +429,7 @@ export default function Scheduling() {
                             onChange={handleChange}
                             required
                             min={getMinDate()}
-                            className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer transition-all"
+                            className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer transition-all"
                           />
                         </div>
                       </div>
@@ -447,7 +447,7 @@ export default function Scheduling() {
                             value={formData.time}
                             onChange={handleChange}
                             required
-                            className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
+                            className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
                           >
                             <option value="">{i18n.language === 'es' ? 'Hora' : 'Time'}</option>
                             <option value="morning">{i18n.language === 'es' ? 'Mañana (9-12)' : 'Morning (9-12)'}</option>
@@ -476,7 +476,7 @@ export default function Scheduling() {
                         rows={4}
                         maxLength={500}
                         placeholder={i18n.language === 'es' ? 'Describe brevemente tu proyecto...' : 'Briefly describe your project...'}
-                        className="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-all"
+                        className="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#26A3AD] focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-all"
                       ></textarea>
                       <div className="flex justify-between items-center mt-2 px-1">
                         <span className="text-xs text-gray-500 dark:text-gray-400">
@@ -493,7 +493,7 @@ export default function Scheduling() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-8 py-4 bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 text-white font-bold text-base rounded-xl hover:shadow-2xl hover:shadow-teal-500/30 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 whitespace-nowrap cursor-pointer"
+                    className="w-full px-8 py-4 bg-gradient-to-r from-[#1A7F88] to-[#26A3AD] dark:from-[#26A3AD] dark:to-[#4EFFEF] text-white dark:text-[#1c2121] font-bold text-base rounded-xl hover:shadow-2xl hover:shadow-[#26A3AD]/30 hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 whitespace-nowrap cursor-pointer"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-3">

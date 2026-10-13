@@ -1,8 +1,27 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { useGoToSection } from '../../../hooks/useGoToSection';
 
 export default function Footer() {
   const { t } = useTranslation('common');
+  const goToSection = useGoToSection();
+  const linkClass = 'text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer text-left';
+
+  const serviceLinks = [
+    { label: t('services.items.branding.title'), to: '/servicios/identidad-de-marca' },
+    { label: t('services.items.graphic.title'), to: '/servicios/diseno-grafico' },
+    { label: t('services.items.digital.title'), to: '/servicios/soluciones-digitales' },
+    { label: t('services.items.audiovisual.title'), to: '/servicios/produccion-audiovisual' },
+    { label: t('services.items.prepress.title'), to: '/servicios/pre-prensa' },
+    { label: t('services.items.led.title'), to: '/servicios/pantallas-led' },
+  ];
+
+  const quickLinks = [
+    { label: t('nav.proposition'), id: 'propuesta' },
+    { label: t('nav.process'), id: 'proceso' },
+    { label: t('nav.portfolio'), id: 'portafolio' },
+    { label: t('nav.contact'), id: 'contact' },
+  ];
 
   return (
     <footer className="bg-[#2D3232] dark:bg-black text-white py-12 md:py-16 transition-colors duration-300">
@@ -19,34 +38,30 @@ export default function Footer() {
             <p className="text-sm sm:text-base text-gray-400 leading-relaxed mb-4 sm:mb-6">
               {t('footer.description')}
             </p>
-            <div className="flex gap-3">
-              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#4EFFEF] hover:to-[#26A3AD] flex items-center justify-center transition-all cursor-pointer">
-                <i className="ri-instagram-line text-base sm:text-lg"></i>
-              </a>
-              <a href="#" className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-[#4EFFEF] hover:to-[#26A3AD] flex items-center justify-center transition-all cursor-pointer">
-                <i className="ri-facebook-fill text-base sm:text-lg"></i>
-              </a>
-            </div>
           </div>
 
           <div>
             <h5 className="text-base sm:text-lg font-bold mb-4 sm:mb-6" style={{ fontFamily: '"Syne", sans-serif' }}>{t('footer.services')}</h5>
             <ul className="space-y-2 sm:space-y-3">
-              <li><a href="#servicios" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('services.items.branding.title')}</a></li>
-              <li><a href="#servicios" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('services.items.graphic.title')}</a></li>
-              <li><a href="#servicios" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('services.items.digital.title')}</a></li>
-              <li><a href="#servicios" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('services.items.audiovisual.title')}</a></li>
-              <li><a href="#servicios" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('services.items.led.title')}</a></li>
+              {serviceLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className={linkClass}>{link.label}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h5 className="text-base sm:text-lg font-bold mb-4 sm:mb-6" style={{ fontFamily: '"Syne", sans-serif' }}>{t('footer.quickLinks')}</h5>
             <ul className="space-y-2 sm:space-y-3">
-              <li><a href="#propuesta" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.proposition')}</a></li>
-              <li><a href="#proceso" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.process')}</a></li>
-              <li><a href="#portafolio" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.portfolio')}</a></li>
-              <li><a href="#contact" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.contact')}</a></li>
+              {quickLinks.map((link) => (
+                <li key={link.id}>
+                  <button type="button" onClick={() => goToSection(link.id)} className={linkClass}>{link.label}</button>
+                </li>
+              ))}
+              <li>
+                <Link to="/portafolio" className={linkClass}>{t('portfolioPage.navLabel')}</Link>
+              </li>
             </ul>
           </div>
 

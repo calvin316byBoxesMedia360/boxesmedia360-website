@@ -62,7 +62,7 @@ export default function Process() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative flex flex-col bg-paper-soft dark:bg-[#252a2a] rounded-3xl overflow-hidden border border-[#E2D9C8] dark:border-gray-800 hover:border-[#26A3AD]/60 dark:hover:border-[#4EFFEF]/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+              className="group relative flex flex-col bg-paper-soft dark:bg-[#252a2a] rounded-3xl overflow-hidden border border-[#D3C8B5] dark:border-gray-800 hover:border-[#26A3AD]/60 dark:hover:border-[#4EFFEF]/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
             >
               {/* Imagen del paso (siempre visible) */}
               <div className="relative h-44 sm:h-48 overflow-hidden">
@@ -94,7 +94,7 @@ export default function Process() {
               </div>
 
               {index < steps.length - 1 && (
-                <div className="hidden lg:flex absolute top-24 -right-5 z-20 w-8 h-8 rounded-full bg-paper-soft dark:bg-[#252a2a] border border-[#E2D9C8] dark:border-gray-700 items-center justify-center">
+                <div className="hidden lg:flex absolute top-24 -right-5 z-20 w-8 h-8 rounded-full bg-paper-soft dark:bg-[#252a2a] border border-[#D3C8B5] dark:border-gray-700 items-center justify-center">
                   <i className="ri-arrow-right-line text-lg text-[#26A3AD] dark:text-[#4EFFEF]"></i>
                 </div>
               )}

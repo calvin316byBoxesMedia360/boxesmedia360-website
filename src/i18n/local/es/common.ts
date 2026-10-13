@@ -586,6 +586,16 @@ export const es = {
     },
 
     // Footer
+    portfolioPage: {
+      navLabel: 'Portafolio completo',
+      badge: 'Portafolio',
+      title: 'Trabajo real para negocios reales',
+      subtitle: 'Una selección de proyectos de identidad, diseño comercial, menús digitales, imagen de producto y web hechos por BoxesMedia360.',
+      visit: 'Visitar sitio',
+      enlarge: 'Ampliar',
+      cta: 'Ver portafolio completo'
+    },
+
     footer: {
       description: 'Estudio creativo especializado en transformar ideas en marcas listas para el mercado.',
       quickLinks: 'Enlaces Rápidos',

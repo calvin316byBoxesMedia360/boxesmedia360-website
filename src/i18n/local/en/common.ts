@@ -584,6 +584,16 @@ export const en = {
     },
 
     // Footer
+    portfolioPage: {
+      navLabel: 'Full portfolio',
+      badge: 'Portfolio',
+      title: 'Real work for real businesses',
+      subtitle: 'A selection of identity, commercial design, digital menu, product imagery and web projects made by BoxesMedia360.',
+      visit: 'Visit site',
+      enlarge: 'Enlarge',
+      cta: 'View full portfolio'
+    },
+
     footer: {
       description: 'Creative studio specialized in transforming ideas into market-ready brands.',
       quickLinks: 'Quick Links',
