@@ -39,7 +39,7 @@ export default function Process() {
   ];
 
   return (
-    <section id="proceso" className="py-20 md:py-32 bg-white dark:bg-[#2D3232] transition-colors duration-300 relative overflow-hidden">
+    <section id="proceso" className="py-20 md:py-32 bg-paper-soft dark:bg-[#2D3232] transition-colors duration-300 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-64 h-64 sm:w-96 sm:h-96 bg-[#4EFFEF] rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-[#26A3AD] rounded-full blur-3xl"></div>
@@ -51,7 +51,7 @@ export default function Process() {
             {t('process.badge')}
           </span>
           <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#2D3232] dark:text-white mb-4 md:mb-6 px-4" style={{ fontFamily: '"Syne", sans-serif' }}>
-            {t('process.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF]">{t('process.titleHighlight')}</span>
+            {t('process.title')} <span className="text-brand-gradient">{t('process.titleHighlight')}</span>
           </h3>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             {t('process.subtitle')}
@@ -62,77 +62,71 @@ export default function Process() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-transparent dark:hover:border-transparent transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer"
+              className="group relative flex flex-col bg-paper-soft dark:bg-[#252a2a] rounded-3xl overflow-hidden border border-[#E2D9C8] dark:border-gray-800 hover:border-[#26A3AD]/60 dark:hover:border-[#4EFFEF]/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
             >
-              {/* Background Image */}
-              <div className="absolute inset-0 overflow-hidden">
+              {/* Imagen del paso (siempre visible) */}
+              <div className="relative h-44 sm:h-48 overflow-hidden">
                 <img
                   src={step.image}
                   alt={step.title}
-                  className="w-full h-full object-cover opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                <span
+                  className="absolute bottom-3 right-4 text-4xl sm:text-5xl font-bold text-white/90 drop-shadow-lg"
+                  style={{ fontFamily: '"Syne", sans-serif' }}
+                >
+                  {step.number}
+                </span>
+                <div className={`absolute bottom-3 left-4 w-12 h-12 rounded-2xl bg-gradient-to-br ${step.color} bg-[#26A3AD] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <i className={`${step.icon} text-2xl text-white`}></i>
+                </div>
               </div>
 
-              {/* Gradient Overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-
-              <div className="relative p-6 sm:p-8">
-                <div className={`inline-flex w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br ${step.color} items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 animate-pulse group-hover:animate-none`}>
-                  <i className={`${step.icon} text-2xl sm:text-3xl text-white`}></i>
-                </div>
-
-                <div className={`text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-br ${step.color} bg-clip-text text-transparent opacity-20 mb-3 sm:mb-4`} style={{ fontFamily: '"Syne", sans-serif' }}>
-                  {step.number}
-                </div>
-
-                <h4 className="text-xl sm:text-2xl font-bold text-[#2D3232] dark:text-white mb-3 sm:mb-4" style={{ fontFamily: '"Syne", sans-serif' }}>
+              <div className="relative p-6 sm:p-7 flex-1">
+                <h4 className="text-xl sm:text-2xl font-bold text-[#2D3232] dark:text-white mb-3" style={{ fontFamily: '"Syne", sans-serif' }}>
                   {step.title}
                 </h4>
-
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
                   {step.description}
                 </p>
-
-                {/* Visual hint for interaction */}
-                <div className="flex items-center gap-2 text-[#26A3AD] dark:text-[#4EFFEF] text-xs sm:text-sm font-medium opacity-60 group-hover:opacity-0 transition-opacity">
-                  <i className="ri-hand-coin-line"></i>
-                  <span>{t('common.tapToSeeMore') || 'Tap to see more'}</span>
-                </div>
               </div>
 
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                  <i className="ri-arrow-right-line text-2xl sm:text-3xl text-[#26A3AD] dark:text-[#4EFFEF]"></i>
+                <div className="hidden lg:flex absolute top-24 -right-5 z-20 w-8 h-8 rounded-full bg-paper-soft dark:bg-[#252a2a] border border-[#E2D9C8] dark:border-gray-700 items-center justify-center">
+                  <i className="ri-arrow-right-line text-lg text-[#26A3AD] dark:text-[#4EFFEF]"></i>
                 </div>
               )}
             </div>
           ))}
         </div>
 
-        <div className="relative rounded-3xl overflow-hidden max-h-[300px] sm:max-h-[400px] md:max-h-[500px]">
+        {/* Banner "Proceso probado" con capa de desenfoque para legibilidad */}
+        <div className="relative rounded-3xl overflow-hidden min-h-[320px] sm:min-h-[380px] md:min-h-[440px] flex items-center">
           <img
             src="/images/process-proven.png"
             alt={t('process.cta.title')}
             title={t('process.badge')}
-            className="w-full h-full object-cover object-center"
+            loading="lazy"
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2D3232]/90 via-[#2D3232]/70 to-transparent flex items-center">
-            <div className="max-w-2xl p-6 sm:p-8 md:p-12 lg:p-16">
-              <h4 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6" style={{ fontFamily: '"Syne", sans-serif' }}>
-                {t('process.cta.title')}
-              </h4>
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed mb-4 sm:mb-6 md:mb-8">
-                {t('process.cta.description')}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                <div className="flex items-center gap-2 sm:gap-3 text-white">
-                  <i className="ri-check-line text-xl sm:text-2xl text-[#4EFFEF]"></i>
-                  <span className="text-sm sm:text-base md:text-lg font-semibold">{t('process.steps.launch.title')}</span>
-                </div>
-                <div className="flex items-center gap-2 sm:gap-3 text-white">
-                  <i className="ri-check-line text-xl sm:text-2xl text-[#4EFFEF]"></i>
-                  <span className="text-sm sm:text-base md:text-lg font-semibold">{t('process.steps.launch.description')}</span>
-                </div>
+          <div className="absolute inset-0 backdrop-blur-[3px] bg-gradient-to-r from-[#1c2121]/90 via-[#1c2121]/70 to-[#1c2121]/30"></div>
+          <div className="relative max-w-2xl p-6 sm:p-8 md:p-12 lg:p-16">
+            <h4 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 drop-shadow-lg" style={{ fontFamily: '"Syne", sans-serif' }}>
+              {t('process.cta.title')}
+            </h4>
+            <p className="text-base sm:text-lg md:text-xl text-gray-100 leading-relaxed mb-4 sm:mb-6 md:mb-8 drop-shadow">
+              {t('process.cta.description')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <i className="ri-check-line text-xl sm:text-2xl text-[#4EFFEF]"></i>
+                <span className="text-sm sm:text-base md:text-lg font-semibold">{t('process.steps.launch.title')}</span>
+              </div>
+              <div className="flex items-center gap-2 sm:gap-3 text-white">
+                <i className="ri-check-line text-xl sm:text-2xl text-[#4EFFEF]"></i>
+                <span className="text-sm sm:text-base md:text-lg font-semibold">{t('process.steps.launch.description')}</span>
               </div>
             </div>
           </div>

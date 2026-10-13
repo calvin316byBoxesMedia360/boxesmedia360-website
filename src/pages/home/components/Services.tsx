@@ -47,14 +47,14 @@ export default function Services() {
   ];
 
   return (
-    <section id="servicios" className="py-20 md:py-32 bg-white dark:bg-[#2D3232] transition-colors duration-300">
+    <section id="servicios" className="py-20 md:py-32 bg-paper-soft dark:bg-[#2D3232] transition-colors duration-300">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-12 md:mb-20">
           <span className="text-sm font-bold text-[#26A3AD] dark:text-[#4EFFEF] tracking-wider uppercase mb-4 block">
             {t('services.badge')}
           </span>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#2D3232] dark:text-white mb-4 md:mb-6 px-4" style={{ fontFamily: '"Syne", sans-serif' }}>
-            {t('services.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF]">{t('services.titleHighlight')}</span>
+            {t('services.title')} <span className="text-brand-gradient">{t('services.titleHighlight')}</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             {t('services.subtitle')}
@@ -66,7 +66,7 @@ export default function Services() {
             <article
               key={index}
               onClick={() => navigate(service.route)}
-              className={`group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col cursor-pointer ${service.featured
+              className={`group relative bg-paper-soft dark:bg-[#2D3232] rounded-3xl overflow-hidden border transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 h-full flex flex-col cursor-pointer ${service.featured
                 ? 'border-[#26A3AD]/50 dark:border-[#4EFFEF]/50 ring-2 ring-[#26A3AD]/20 dark:ring-[#4EFFEF]/20'
                 : 'border-gray-100 dark:border-gray-800 hover:border-transparent dark:hover:border-transparent'
                 }`}

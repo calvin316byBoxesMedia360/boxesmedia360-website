@@ -593,7 +593,9 @@ export const en = {
       phone: 'Phone',
       followUs: 'Follow Us',
       rights: 'All rights reserved.',
-      poweredBy: 'Powered by Readdy'
+      privacy: 'Privacy',
+      terms: 'Terms',
+      poweredBy: 'Powered by BoxesMedia360'
     },
 
     // Scheduling Section

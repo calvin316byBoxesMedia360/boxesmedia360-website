@@ -56,6 +56,17 @@ export default function Scheduling() {
       return;
     }
 
+    // Trampa anti-spam: los bots llenan el campo oculto, las personas no
+    const honey = (e.currentTarget as HTMLFormElement).elements.namedItem('_honey') as HTMLInputElement | null;
+    if (honey && honey.value) {
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(formData.email)) {
+      setSubmitStatus('error');
+      return;
+    }
+
     if (contactType === 'schedule' && !formData.immediateContact && (!formData.date || !formData.time)) {
       return;
     }
@@ -86,7 +97,8 @@ export default function Scheduling() {
       }
 
       // Use Formsubmit.co for email delivery
-      const formUrl = 'https://formsubmit.co/boxesmedia360@gmail.com';
+      // Endpoint AJAX de FormSubmit (el endpoint normal devuelve HTML/redirect y no sirve para fetch)
+      const formUrl = 'https://formsubmit.co/ajax/boxesmedia360@gmail.com';
 
       const response = await fetch(formUrl, {
         method: 'POST',
@@ -98,7 +110,8 @@ export default function Scheduling() {
           ...Object.fromEntries(submitData),
           _subject: `Nuevo contacto: ${formData.name} - ${contactType === 'general' ? 'Consulta General' : 'Agendamiento'}`,
           _template: 'table',
-          _captcha: 'false'
+          _captcha: 'false',
+          _honey: ''
         })
       });
 
@@ -134,7 +147,7 @@ export default function Scheduling() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-teal-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
+    <section id="contact" className="py-24 bg-gradient-to-br from-paper via-paper-soft to-paper-deep dark:from-gray-900 dark:via-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
@@ -144,7 +157,7 @@ export default function Scheduling() {
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
             {i18n.language === 'es' ? '¿Listo para transformar' : 'Ready to transform'}{' '}
-            <span className="bg-gradient-to-r from-teal-500 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-brand-gradient">
               {i18n.language === 'es' ? 'tu proyecto?' : 'your project?'}
             </span>
           </h2>
@@ -159,7 +172,7 @@ export default function Scheduling() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Features */}
           <div className="space-y-8">
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+            <div className="bg-paper-soft dark:bg-gray-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                 {i18n.language === 'es' ? '¿Por qué contactarnos?' : 'Why contact us?'}
               </h3>
@@ -242,15 +255,15 @@ export default function Scheduling() {
           </div>
 
           {/* Right Side - Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+          <div className="bg-paper-soft dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
             <div className="p-8 md:p-10">
               {/* Contact Type Selector */}
-              <div className="flex gap-3 mb-8 p-1 bg-gray-100 dark:bg-gray-700/50 rounded-xl">
+              <div className="flex gap-3 mb-8 p-1 bg-paper-deep dark:bg-gray-700/50 rounded-xl">
                 <button
                   type="button"
                   onClick={() => setContactType('general')}
                   className={`flex-1 px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap cursor-pointer ${contactType === 'general'
-                    ? 'bg-white dark:bg-gray-800 text-teal-600 dark:text-teal-400 shadow-md'
+                    ? 'bg-paper-soft dark:bg-gray-800 text-teal-600 dark:text-teal-400 shadow-md'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}
                 >
@@ -261,7 +274,7 @@ export default function Scheduling() {
                   type="button"
                   onClick={() => setContactType('schedule')}
                   className={`flex-1 px-4 py-3 rounded-lg font-semibold text-sm transition-all whitespace-nowrap cursor-pointer ${contactType === 'schedule'
-                    ? 'bg-white dark:bg-gray-800 text-teal-600 dark:text-teal-400 shadow-md'
+                    ? 'bg-paper-soft dark:bg-gray-800 text-teal-600 dark:text-teal-400 shadow-md'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}
                 >
@@ -270,7 +283,9 @@ export default function Scheduling() {
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} data-readdy-form id="unified-contact-form">
+              <form onSubmit={handleSubmit} id="unified-contact-form">
+                {/* Honeypot anti-spam (invisible para personas) */}
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                 <div className="space-y-5">
                   {/* Name */}
                   <div>
@@ -285,11 +300,12 @@ export default function Scheduling() {
                         type="text"
                         id="name"
                         name="name"
+                        maxLength={100}
                         value={formData.name}
                         onChange={handleChange}
                         required
                         placeholder={i18n.language === 'es' ? 'Tu nombre' : 'Your name'}
-                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
+                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                       />
                     </div>
                   </div>
@@ -307,11 +323,12 @@ export default function Scheduling() {
                         type="email"
                         id="email"
                         name="email"
+                        maxLength={120}
                         value={formData.email}
                         onChange={handleChange}
                         required
                         placeholder={i18n.language === 'es' ? 'tu@email.com' : 'your@email.com'}
-                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
+                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                       />
                     </div>
                   </div>
@@ -329,11 +346,12 @@ export default function Scheduling() {
                         type="tel"
                         id="phone"
                         name="phone"
+                        maxLength={30}
                         value={formData.phone}
                         onChange={handleChange}
                         required
                         placeholder="+1 (831) 000-0000"
-                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
+                        className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-all"
                       />
                     </div>
                   </div>
@@ -353,7 +371,7 @@ export default function Scheduling() {
                           name="service"
                           value={formData.service}
                           onChange={handleChange}
-                          className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
+                          className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
                         >
                           <option value="">{i18n.language === 'es' ? 'Selecciona un servicio' : 'Select a service'}</option>
                           <option value="branding">{i18n.language === 'es' ? 'Identidad de Marca' : 'Brand Identity'}</option>
@@ -411,7 +429,7 @@ export default function Scheduling() {
                             onChange={handleChange}
                             required
                             min={getMinDate()}
-                            className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer transition-all"
+                            className="w-full pl-11 pr-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer transition-all"
                           />
                         </div>
                       </div>
@@ -429,7 +447,7 @@ export default function Scheduling() {
                             value={formData.time}
                             onChange={handleChange}
                             required
-                            className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
+                            className="w-full pl-11 pr-10 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white cursor-pointer appearance-none transition-all"
                           >
                             <option value="">{i18n.language === 'es' ? 'Hora' : 'Time'}</option>
                             <option value="morning">{i18n.language === 'es' ? 'Mañana (9-12)' : 'Morning (9-12)'}</option>
@@ -458,7 +476,7 @@ export default function Scheduling() {
                         rows={4}
                         maxLength={500}
                         placeholder={i18n.language === 'es' ? 'Describe brevemente tu proyecto...' : 'Briefly describe your project...'}
-                        className="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-gray-50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-all"
+                        className="w-full px-4 py-3 text-sm border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent bg-paper dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 resize-none transition-all"
                       ></textarea>
                       <div className="flex justify-between items-center mt-2 px-1">
                         <span className="text-xs text-gray-500 dark:text-gray-400">

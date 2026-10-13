@@ -7,6 +7,7 @@ import DigitalSolutionsPage from "../pages/services/DigitalSolutionsPage";
 import AudiovisualPage from "../pages/services/AudiovisualPage";
 import PrepressPage from "../pages/services/PrepressPage";
 import LEDScreensPage from "../pages/services/LEDScreensPage";
+import LegalPage from "../pages/legal/LegalPage";
 
 const routes: RouteObject[] = [
   {
@@ -36,6 +37,14 @@ const routes: RouteObject[] = [
   {
     path: "/servicios/pantallas-led",
     element: <LEDScreensPage />,
+  },
+  {
+    path: "/privacidad",
+    element: <LegalPage doc="privacy" />,
+  },
+  {
+    path: "/terminos",
+    element: <LegalPage doc="terms" />,
   },
   {
     path: "*",

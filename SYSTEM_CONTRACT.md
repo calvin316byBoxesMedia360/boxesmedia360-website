@@ -83,7 +83,7 @@ Desarrollo local → npm run build → out/ → firebase deploy
 - El directorio de publicación es `out/` (configurado en `firebase.json`)
 - El proyecto Firebase es `boxesmedia-web`
 - El dominio custom es `boxesmedia360.com` (conectado como dominio personalizado en Firebase)
-- **No hay CI/CD automático** — todos los deploys son manuales
+- **CI/CD con GitHub Actions**: cada push a `master` compila y despliega a Firebase; los PR solo compilan.
 
 ### Regla de deploy:
 Antes de hacer `firebase deploy`, siempre:
@@ -103,7 +103,7 @@ Antes de hacer `firebase deploy`, siempre:
 
 ## 9. Control de Versiones (Git)
 
-- Branch principal: `main`
+- Branch principal: `master`
 - Todo cambio significativo debe tener un commit descriptivo
 - Formato de commit: `tipo: descripción breve` (ej: `feat: agregar sección de testimonios`)
 - Tipos válidos: `feat`, `fix`, `style`, `content`, `deploy`, `docs`, `refactor`

@@ -67,7 +67,8 @@ export default defineConfig({
   ],
   base,
   build: {
-    sourcemap: true,
+    // No publicar sourcemaps en producción (exponen el código fuente completo)
+    sourcemap: false,
     outDir: "out",
   },
   resolve: {
@@ -77,6 +78,7 @@ export default defineConfig({
   },
   server: {
     port: 3000,
-    host: "0.0.0.0",
+    // Solo localhost: el dev server de Vite tiene vulnerabilidades de lectura de archivos si se expone en la red
+    host: "localhost",
   },
 });

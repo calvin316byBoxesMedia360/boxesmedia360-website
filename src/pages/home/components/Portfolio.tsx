@@ -63,14 +63,14 @@ export default function Portfolio() {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="portafolio" className="py-20 md:py-32 bg-gray-50 dark:bg-[#1a1d1d] transition-colors duration-300">
+    <section id="portafolio" className="py-20 md:py-32 bg-paper dark:bg-[#1a1d1d] transition-colors duration-300">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
           <span className="text-sm font-bold text-[#26A3AD] dark:text-[#4EFFEF] tracking-wider uppercase mb-4 block">
             {t('portfolio.badge')}
           </span>
           <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#2D3232] dark:text-white mb-4 md:mb-6 px-4" style={{ fontFamily: '"Syne", sans-serif' }}>
-            {t('portfolio.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF]">{t('portfolio.titleHighlight')}</span>
+            {t('portfolio.title')} <span className="text-brand-gradient">{t('portfolio.titleHighlight')}</span>
           </h3>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             {t('portfolio.subtitle')}
@@ -84,7 +84,7 @@ export default function Portfolio() {
               onClick={() => setActiveCategory(category.key)}
               className={`px-5 md:px-8 py-2.5 md:py-3.5 rounded-full text-sm md:text-base font-semibold transition-all whitespace-nowrap cursor-pointer ${activeCategory === category.key
                 ? 'bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF] text-white shadow-lg shadow-[#26A3AD]/30 scale-105'
-                : 'bg-white dark:bg-[#2D3232] text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] hover:shadow-md'
+                : 'bg-paper-soft dark:bg-[#2D3232] text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] hover:shadow-md'
                 }`}
             >
               {category.label}
@@ -96,7 +96,7 @@ export default function Portfolio() {
           {filteredProjects.map((project, index) => (
             <article
               key={index}
-              className="group relative bg-white dark:bg-[#2D3232] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer"
+              className="group relative bg-paper-soft dark:bg-[#2D3232] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer"
             >
               <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                 <img

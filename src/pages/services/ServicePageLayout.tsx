@@ -40,7 +40,7 @@ export default function ServicePageLayout({
     }, []);
 
     return (
-        <div className="min-h-screen bg-white dark:bg-gray-900">
+        <div className="min-h-screen bg-paper-soft dark:bg-gray-900">
             {/* Hero Section with Tech-Feel */}
             <section className="relative py-20 md:py-32 bg-gradient-to-br from-[#26A3AD] to-[#4EFFEF] overflow-hidden">
                 {/* Animated Grid Background */}
@@ -80,8 +80,8 @@ export default function ServicePageLayout({
 
                 {/* Glowing Orbs */}
                 <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-slow"></div>
-                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse-slower"></div>
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-paper-soft rounded-full blur-3xl animate-pulse-slow"></div>
+                    <div className="absolute bottom-0 left-0 w-96 h-96 bg-paper-soft rounded-full blur-3xl animate-pulse-slower"></div>
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -191,7 +191,7 @@ export default function ServicePageLayout({
                     </div>
 
                     {/* Process Section */}
-                    <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 md:p-12">
+                    <div className="bg-paper dark:bg-gray-800 rounded-3xl p-8 md:p-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center" style={{ fontFamily: '"Syne", sans-serif' }}>
                             {t('services.servicePages.common.ourProcess')}
                         </h2>

@@ -4,12 +4,17 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  contents: read
 
 jobs:
-  deploy:
-    name: Build & Deploy
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
@@ -17,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
           cache: 'npm'
 
       - name: Instalar dependencias
@@ -26,7 +31,29 @@ jobs:
       - name: Build producción
         run: npm run build
 
+      - name: Guardar build
+        uses: actions/upload-artifact@v4
+        with:
+          name: out
+          path: out
+          retention-days: 3
+
+  deploy:
+    name: Deploy (solo master)
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Descargar build
+        uses: actions/download-artifact@v4
+        with:
+          name: out
+          path: out
+
       - name: Deploy a Firebase Hosting
-        run: npx firebase-tools deploy --only hosting --project boxesmedia-web --token "$FIREBASE_TOKEN" --non-interactive
+        run: npx firebase-tools@13 deploy --only hosting --project boxesmedia-web --token "$FIREBASE_TOKEN" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

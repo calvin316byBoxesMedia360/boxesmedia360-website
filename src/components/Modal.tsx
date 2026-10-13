@@ -42,7 +42,7 @@ export default function Modal({ isOpen, onClose, title, icon, children }: ModalP
 
             {/* Modal Content */}
             <div
-                className="relative bg-white dark:bg-[#2D3232] rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slideUp border border-gray-200 dark:border-gray-700"
+                className="relative bg-paper-soft dark:bg-[#2D3232] rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slideUp border border-gray-200 dark:border-gray-700"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
@@ -59,7 +59,7 @@ export default function Modal({ isOpen, onClose, title, icon, children }: ModalP
                         <button
                             onClick={onClose}
                             className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:scale-110 flex-shrink-0"
-                            aria-label={t('common.close')}
+                            aria-label={t('close')}
                         >
                             <i className="ri-close-line text-2xl text-white"></i>
                         </button>
@@ -72,12 +72,12 @@ export default function Modal({ isOpen, onClose, title, icon, children }: ModalP
                 </div>
 
                 {/* Footer */}
-                <div className="sticky bottom-0 bg-gray-50 dark:bg-[#1a1d1d] p-6 rounded-b-3xl border-t border-gray-200 dark:border-gray-700">
+                <div className="sticky bottom-0 bg-paper dark:bg-[#1a1d1d] p-6 rounded-b-3xl border-t border-gray-200 dark:border-gray-700">
                     <button
                         onClick={onClose}
                         className="w-full py-3 px-6 bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF] text-white font-bold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
                     >
-                        {t('common.gotIt')}
+                        {t('gotIt')}
                     </button>
                 </div>
             </div>

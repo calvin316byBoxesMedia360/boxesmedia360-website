@@ -66,14 +66,15 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-[#1a1a1a] transition-colors duration-300"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-paper-soft dark:bg-[#1a1a1a] transition-colors duration-300"
       style={{
         backgroundImage: `url('https://readdy.ai/api/search-image?query=Modern%20creative%20studio%20workspace%20with%20design%20equipment%2C%20computers%2C%20and%20professional%20lighting%20setup%2C%20minimalist%20aesthetic%20with%20turquoise%20and%20teal%20accent%20colors%2C%20bright%20and%20airy%20atmosphere%2C%20clean%20organized%20desk%20with%20creative%20tools%2C%20professional%20photography%20studio%20environment%2C%20high-end%20production%20space&width=1920&height=1080&seq=hero-bg-001&orientation=landscape')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/40 dark:from-[#1a1a1a]/90 dark:via-[#1a1a1a]/80 dark:to-transparent"></div>
+      {/* Capa de desenfoque: la imagen se sigue viendo, pero el texto se lee con claridad */}
+      <div className="absolute inset-0 backdrop-blur-[5px] bg-gradient-to-r from-black/75 via-black/55 to-black/30 dark:from-[#141818]/90 dark:via-[#141818]/70 dark:to-[#141818]/35"></div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
         <div className="max-w-3xl">
@@ -138,7 +139,7 @@ export default function Hero() {
           onClick={() => setActiveModal(null)}
         >
           <div
-            className="bg-white dark:bg-[#2D3232] rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl transform animate-scaleIn"
+            className="bg-paper-soft dark:bg-[#2D3232] rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl transform animate-scaleIn"
             onClick={(e) => e.stopPropagation()}
           >
             {statsData.map((stat) => {
@@ -158,7 +159,7 @@ export default function Hero() {
                     </div>
                     <button
                       onClick={() => setActiveModal(null)}
-                      className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+                      className="w-10 h-10 rounded-full bg-paper-deep dark:bg-gray-700 flex items-center justify-center hover:bg-paper-deep dark:hover:bg-gray-600 transition-colors cursor-pointer"
                     >
                       <i className="ri-close-line text-xl text-gray-600 dark:text-gray-300"></i>
                     </button>

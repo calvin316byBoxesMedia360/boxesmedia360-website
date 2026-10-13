@@ -595,7 +595,9 @@ export const es = {
       phone: 'Teléfono',
       followUs: 'Síguenos',
       rights: 'Todos los derechos reservados.',
-      poweredBy: 'Powered by Readdy'
+      privacy: 'Privacidad',
+      terms: 'Términos',
+      poweredBy: 'Powered by BoxesMedia360'
     },
 
     // Scheduling Section

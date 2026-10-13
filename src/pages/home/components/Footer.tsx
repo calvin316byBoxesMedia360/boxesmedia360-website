@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const { t } = useTranslation('common');
@@ -45,7 +46,7 @@ export default function Footer() {
               <li><a href="#propuesta" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.proposition')}</a></li>
               <li><a href="#proceso" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.process')}</a></li>
               <li><a href="#portafolio" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.portfolio')}</a></li>
-              <li><a href="#contacto" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.contact')}</a></li>
+              <li><a href="#contact" className="text-sm sm:text-base text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('nav.contact')}</a></li>
             </ul>
           </div>
 
@@ -75,12 +76,12 @@ export default function Footer() {
         <div className="pt-6 sm:pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
             <p className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
-              © 2025 BoxesMedia360. {t('footer.rights')}
+              © {new Date().getFullYear()} BoxesMedia360. {t('footer.rights')}
             </p>
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
-              <a href="#" className="text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">Privacidad</a>
-              <a href="#" className="text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">Términos</a>
-              <a href="https://readdy.ai/?origin=logo" target="_blank" rel="nofollow" className="text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('footer.poweredBy')}</a>
+              <Link to="/privacidad" className="text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('footer.privacy')}</Link>
+              <Link to="/terminos" className="text-gray-400 hover:text-[#4EFFEF] transition-colors cursor-pointer">{t('footer.terms')}</Link>
+              <span className="text-gray-400">{t('footer.poweredBy')}</span>
             </div>
           </div>
         </div>

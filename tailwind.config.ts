@@ -15,6 +15,12 @@ export default {
         },
         accent: '#E2B679',
         dark: '#2D3232',
+        // Modo claro: tonos hueso/beige suaves en lugar de blanco puro
+        paper: {
+          DEFAULT: '#F3EEE5',
+          soft: '#FAF7F1',
+          deep: '#E9E1D3',
+        },
       },
     },
   },

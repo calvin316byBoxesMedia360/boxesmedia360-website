@@ -6,6 +6,34 @@
 
 ---
 
+## [2026-10-13] — Sincronización con la versión en vivo, seguridad y mejoras visuales
+
+**Por:** Calvin (con Claude)
+
+**Contexto:**
+El código en GitHub era más antiguo que lo publicado en boxesmedia360.com (build `6ffd1f`, 12 feb 2026). El sitio en vivo publicaba sus sourcemaps, lo que permitió recuperar los 26 archivos fuente exactos (verificados con SHA-256).
+
+**Cambios:**
+- Recuperado el código de la versión en vivo: páginas de servicios (`/servicios/*`), `Modal`, menú móvil, i18n ampliado, `index.html` con fuentes e íconos, animaciones en `index.css`.
+- Hero y banner "Proceso probado": capa de desenfoque (blur) + degradado oscuro para legibilidad.
+- Modo claro real: paleta hueso/beige (`paper`, `paper-soft`, `paper-deep`) en lugar de blanco puro; el tema se aplica al cargar (preferencia guardada o la del sistema) y se declara `color-scheme` para que el navegador no lo oscurezca a la fuerza.
+- Textos con degradado ("mercado", "tu proyecto", etc.) con color sólido de respaldo (`.text-brand-gradient`).
+- Tarjetas de "De la idea al mercado": las imágenes ahora son visibles (antes tenían opacidad 0 hasta hacer hover).
+- Corregidas claves i18n rotas (`common.tapToSeeMore`, `common.learnMore`, `common.gotIt`, `common.close`).
+- Nuevas páginas `/privacidad` y `/terminos` (ES/EN); footer enlazado; "Powered by BoxesMedia360"; año dinámico.
+- Seguridad: sourcemaps desactivados en producción, cabeceras de seguridad (CSP, HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy), formulario con honeypot anti-spam, validación y límites de longitud, endpoint AJAX de FormSubmit, dev server solo en localhost, `npm audit fix`.
+- SEO: `sitemap.xml` y `robots.txt` con el dominio real, `lang="es"`, meta description y título.
+- CI: Node 20, build en cada PR, deploy solo en push a `master`.
+
+**Pendientes:**
+- [ ] Reemplazar imágenes de `readdy.ai` por fotos propias en `public/images/` (hero, 2 servicios, 4 beneficios, equipo, 3 portafolio).
+- [ ] Activar alias aleatorio de FormSubmit para no exponer el correo en el código.
+- [ ] Migrar el deploy de `FIREBASE_TOKEN` (obsoleto) a cuenta de servicio.
+- [ ] Enlaces reales de Instagram/Facebook en el footer.
+- [ ] Revisar los textos legales con un asesor.
+
+---
+
 ## [2026-03-24] — Rescate y estructuración del proyecto
 
 **Por:** Calvin (con Claude Code)
