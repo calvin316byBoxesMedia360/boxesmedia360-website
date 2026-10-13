@@ -16,6 +16,12 @@ export default {
         accent: '#E2B679',
         dark: '#2D3232',
         // Modo claro: tonos hueso/beige suaves en lugar de blanco puro
+        // Modo oscuro: azul navy (mismo tono del header)
+        navy: {
+          DEFAULT: '#111827',
+          deep: '#0B1120',
+          soft: '#1A2338',
+        },
         paper: {
           DEFAULT: '#E6DFD2',
           soft: '#EEE8DD',

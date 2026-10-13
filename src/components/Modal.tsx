@@ -42,7 +42,7 @@ export default function Modal({ isOpen, onClose, title, icon, children }: ModalP
 
             {/* Modal Content */}
             <div
-                className="relative bg-paper-soft dark:bg-[#2D3232] rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slideUp border border-gray-200 dark:border-gray-700"
+                className="relative bg-paper-soft dark:bg-navy-soft rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slideUp border border-gray-200 dark:border-gray-700"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
@@ -72,7 +72,7 @@ export default function Modal({ isOpen, onClose, title, icon, children }: ModalP
                 </div>
 
                 {/* Footer */}
-                <div className="sticky bottom-0 bg-paper dark:bg-[#1a1d1d] p-6 rounded-b-3xl border-t border-gray-200 dark:border-gray-700">
+                <div className="sticky bottom-0 bg-paper dark:bg-navy-deep p-6 rounded-b-3xl border-t border-gray-200 dark:border-gray-700">
                     <button
                         onClick={onClose}
                         className="w-full py-3 px-6 bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF] text-white font-bold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"

@@ -71,7 +71,7 @@ export default function Navigation() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-paper-soft/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-lg'
+        ? 'bg-paper-soft/95 dark:bg-navy/95 backdrop-blur-sm shadow-lg'
         : 'bg-transparent'
         }`}>
         <div className="max-w-7xl mx-auto px-6 py-4">
@@ -124,7 +124,7 @@ export default function Navigation() {
               <button
                 onClick={toggleDarkMode}
                 className={`p-2 rounded-full transition-all hover:scale-110 cursor-pointer ${isScrolled
-                  ? 'bg-paper-deep dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+                  ? 'bg-paper-deep dark:bg-navy-soft text-gray-700 dark:text-gray-300'
                   : 'bg-white/20 text-white hover:bg-white/30'
                   }`}
                 aria-label="Toggle dark mode"
@@ -145,7 +145,7 @@ export default function Navigation() {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`p-2 rounded-full transition-all hover:scale-110 cursor-pointer ${isScrolled
-                  ? 'bg-paper-deep dark:bg-gray-800 text-gray-700 dark:text-gray-300'
+                  ? 'bg-paper-deep dark:bg-navy-soft text-gray-700 dark:text-gray-300'
                   : 'bg-white/20 text-white hover:bg-white/30'
                   }`}
                 aria-label="Toggle menu"
@@ -159,7 +159,7 @@ export default function Navigation() {
                 <button
                   onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all cursor-pointer ${isScrolled
-                    ? 'bg-paper-deep dark:bg-gray-800 hover:bg-paper-deep dark:hover:bg-gray-700'
+                    ? 'bg-paper-deep dark:bg-navy-soft hover:bg-paper-deep dark:hover:bg-[#24304A]'
                     : 'bg-white/20 hover:bg-white/30'
                     }`}
                   aria-label="Select language"
@@ -208,10 +208,10 @@ export default function Navigation() {
 
                 {/* Language Dropdown */}
                 {isLanguageOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-40 bg-paper-soft dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                  <div className="absolute top-full right-0 mt-2 w-40 bg-paper-soft dark:bg-navy-soft rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
                     <button
                       onClick={() => changeLanguage('es')}
-                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-paper dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-paper dark:hover:bg-[#24304A] transition-colors cursor-pointer"
                     >
                       <svg className="w-5 h-4 flex-shrink-0" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
                         <rect fill="#c60b1e" width="900" height="600" />
@@ -224,7 +224,7 @@ export default function Navigation() {
                     </button>
                     <button
                       onClick={() => changeLanguage('en')}
-                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-paper dark:hover:bg-gray-700 transition-colors cursor-pointer"
+                      className="w-full flex items-center gap-3 px-4 py-3 hover:bg-paper dark:hover:bg-[#24304A] transition-colors cursor-pointer"
                     >
                       <svg className="w-5 h-4 flex-shrink-0" viewBox="0 0 7410 3900" xmlns="http://www.w3.org/2000/svg">
                         <rect fill="#b22234" width="7410" height="3900" />
@@ -275,7 +275,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="fixed top-[72px] left-0 right-0 bg-paper-soft dark:bg-gray-900 shadow-2xl z-40 max-h-[calc(100vh-72px)] overflow-y-auto animate-slideDown">
+        <div className="fixed top-[72px] left-0 right-0 bg-paper-soft dark:bg-navy shadow-2xl z-40 max-h-[calc(100vh-72px)] overflow-y-auto animate-slideDown">
           <div className="max-w-7xl mx-auto px-6 py-6">
             <div className="space-y-4">
               {/* Services Section */}
@@ -394,7 +394,7 @@ export default function Navigation() {
       {/* Contact Form Modal */}
       {showContactForm && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div className="bg-paper-soft dark:bg-gray-800 rounded-2xl max-w-md w-full p-6 relative">
+          <div className="bg-paper-soft dark:bg-navy-soft rounded-2xl max-w-md w-full p-6 relative">
             <button
               onClick={() => setShowContactForm(false)}
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 cursor-pointer"
@@ -411,17 +411,17 @@ export default function Navigation() {
               <input
                 type="text"
                 placeholder={t('nav.contact')}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-paper-soft dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-paper-soft dark:bg-[#24304A] text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"
               />
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-paper-soft dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-paper-soft dark:bg-[#24304A] text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none"
               />
               <textarea
                 placeholder={t('hero.subtitle')}
                 rows={4}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-paper-soft dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none resize-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-paper-soft dark:bg-[#24304A] text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 outline-none resize-none"
               ></textarea>
               <button
                 type="submit"

@@ -53,8 +53,8 @@ export default function PortfolioPage() {
   }, [open]);
 
   return (
-    <div className="min-h-screen bg-paper dark:bg-gray-900 transition-colors duration-300">
-      <header className="relative overflow-hidden bg-gradient-to-br from-[#1A7F88] to-[#26A3AD] dark:from-[#1c2121] dark:to-[#1A7F88]">
+    <div className="min-h-screen bg-paper dark:bg-navy transition-colors duration-300">
+      <header className="relative overflow-hidden bg-gradient-to-br from-[#1A7F88] to-[#26A3AD] dark:from-[#0B1120] dark:to-[#1A7F88]">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
           <Link to="/" className="inline-flex items-center gap-2 text-white/90 hover:text-white mb-8 transition-colors">
             <i className="ri-arrow-left-line text-xl"></i>
@@ -77,8 +77,8 @@ export default function PortfolioPage() {
               onClick={() => setActive(c)}
               className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer ${
                 active === c
-                  ? 'bg-[#1A7F88] dark:bg-[#4EFFEF] text-white dark:text-[#1c2121] shadow-md'
-                  : 'bg-paper-soft dark:bg-[#252a2a] text-gray-700 dark:text-gray-300 border border-[#D3C8B5] dark:border-gray-700 hover:border-[#26A3AD]'
+                  ? 'bg-[#1A7F88] dark:bg-[#4EFFEF] text-white dark:text-[#0B1120] shadow-md'
+                  : 'bg-paper-soft dark:bg-navy-soft text-gray-700 dark:text-gray-300 border border-[#D3C8B5] dark:border-gray-700 hover:border-[#26A3AD]'
               }`}
             >
               {c === 'all' ? t('portfolio.categories.all') : catLabel(c)}
@@ -90,7 +90,7 @@ export default function PortfolioPage() {
           {visible.map((item) => (
             <article
               key={item.id}
-              className="mb-6 break-inside-avoid group bg-paper-soft dark:bg-[#252a2a] rounded-3xl overflow-hidden border border-[#D3C8B5] dark:border-gray-800 shadow-sm hover:shadow-xl transition-shadow"
+              className="mb-6 break-inside-avoid group bg-paper-soft dark:bg-navy-soft rounded-3xl overflow-hidden border border-[#D3C8B5] dark:border-gray-800 shadow-sm hover:shadow-xl transition-shadow"
             >
               <button
                 type="button"

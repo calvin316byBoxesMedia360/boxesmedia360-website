@@ -5,7 +5,7 @@
 @layer base {
   body {
     font-family: 'Inter', sans-serif;
-    @apply bg-paper dark:bg-gray-900;
+    @apply bg-paper dark:bg-navy;
   }
 }
 
@@ -101,4 +101,34 @@
       color: LinkText;
     }
   }
+}
+
+/* Fondo animado de las páginas de servicio: formas que aparecen, flotan y se desvanecen */
+@keyframes floatFade {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(0deg) scale(0.6); }
+  20%  { opacity: 1; }
+  50%  { transform: translate(var(--dx), var(--dy)) rotate(calc(var(--rot) / 2)) scale(1); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(calc(var(--dx) * 2), calc(var(--dy) * 2)) rotate(var(--rot)) scale(0.6); }
+}
+.floating-shape {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  animation-name: floatFade;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+.floating-shape--circle { border-radius: 9999px; background: var(--shape-color); }
+.floating-shape--square { border-radius: 3px; background: var(--shape-color); }
+.floating-shape--ring { border-radius: 9999px; border: 2px solid var(--shape-color); }
+.floating-shape--triangle { background: var(--shape-color); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+.floating-shape--cross {
+  background:
+    linear-gradient(var(--shape-color), var(--shape-color)) center / 100% 2px no-repeat,
+    linear-gradient(var(--shape-color), var(--shape-color)) center / 2px 100% no-repeat;
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-shape { animation: none; opacity: 0.5; }
 }

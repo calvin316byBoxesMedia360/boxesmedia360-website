@@ -39,7 +39,7 @@ export default function Process() {
   ];
 
   return (
-    <section id="proceso" className="py-20 md:py-32 bg-paper-soft dark:bg-[#2D3232] transition-colors duration-300 relative overflow-hidden">
+    <section id="proceso" className="py-20 md:py-32 bg-paper-soft dark:bg-navy transition-colors duration-300 relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 left-10 w-64 h-64 sm:w-96 sm:h-96 bg-[#4EFFEF] rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-64 h-64 sm:w-96 sm:h-96 bg-[#26A3AD] rounded-full blur-3xl"></div>
@@ -62,7 +62,7 @@ export default function Process() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="group relative flex flex-col bg-paper-soft dark:bg-[#252a2a] rounded-3xl overflow-hidden border border-[#D3C8B5] dark:border-gray-800 hover:border-[#26A3AD]/60 dark:hover:border-[#4EFFEF]/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
+              className="group relative flex flex-col bg-paper-soft dark:bg-navy-soft rounded-3xl overflow-hidden border border-[#D3C8B5] dark:border-gray-800 hover:border-[#26A3AD]/60 dark:hover:border-[#4EFFEF]/50 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2"
             >
               {/* Imagen del paso (siempre visible) */}
               <div className="relative h-44 sm:h-48 overflow-hidden">
@@ -94,7 +94,7 @@ export default function Process() {
               </div>
 
               {index < steps.length - 1 && (
-                <div className="hidden lg:flex absolute top-24 -right-5 z-20 w-8 h-8 rounded-full bg-paper-soft dark:bg-[#252a2a] border border-[#D3C8B5] dark:border-gray-700 items-center justify-center">
+                <div className="hidden lg:flex absolute top-24 -right-5 z-20 w-8 h-8 rounded-full bg-paper-soft dark:bg-navy-soft border border-[#D3C8B5] dark:border-gray-700 items-center justify-center">
                   <i className="ri-arrow-right-line text-lg text-[#26A3AD] dark:text-[#4EFFEF]"></i>
                 </div>
               )}
@@ -111,7 +111,7 @@ export default function Process() {
             loading="lazy"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 backdrop-blur-[3px] bg-gradient-to-r from-[#1c2121]/90 via-[#1c2121]/70 to-[#1c2121]/30"></div>
+          <div className="absolute inset-0 backdrop-blur-[3px] bg-gradient-to-r from-[#0B1120]/90 via-[#0B1120]/70 to-[#0B1120]/30"></div>
           <div className="relative max-w-2xl p-6 sm:p-8 md:p-12 lg:p-16">
             <h4 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 md:mb-6 drop-shadow-lg" style={{ fontFamily: '"Syne", sans-serif' }}>
               {t('process.cta.title')}

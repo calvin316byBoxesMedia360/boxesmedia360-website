@@ -64,7 +64,7 @@ export default function Portfolio() {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <section id="portafolio" className="py-20 md:py-32 bg-paper dark:bg-[#1a1d1d] transition-colors duration-300">
+    <section id="portafolio" className="py-20 md:py-32 bg-paper dark:bg-navy-deep transition-colors duration-300">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
           <span className="text-sm font-bold text-[#26A3AD] dark:text-[#4EFFEF] tracking-wider uppercase mb-4 block">
@@ -85,7 +85,7 @@ export default function Portfolio() {
               onClick={() => setActiveCategory(category.key)}
               className={`px-5 md:px-8 py-2.5 md:py-3.5 rounded-full text-sm md:text-base font-semibold transition-all whitespace-nowrap cursor-pointer ${activeCategory === category.key
                 ? 'bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF] text-white shadow-lg shadow-[#26A3AD]/30 scale-105'
-                : 'bg-paper-soft dark:bg-[#2D3232] text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] hover:shadow-md'
+                : 'bg-paper-soft dark:bg-navy-soft text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] hover:shadow-md'
                 }`}
             >
               {category.label}
@@ -97,7 +97,7 @@ export default function Portfolio() {
           {filteredProjects.map((project, index) => (
             <article
               key={index}
-              className="group relative bg-paper-soft dark:bg-[#2D3232] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer"
+              className="group relative bg-paper-soft dark:bg-navy-soft rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer"
             >
               <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                 <img
@@ -140,7 +140,7 @@ export default function Portfolio() {
         <div className="mt-12 md:mt-16 text-center">
           <Link
             to="/portafolio"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#1A7F88] to-[#26A3AD] dark:from-[#26A3AD] dark:to-[#4EFFEF] dark:text-[#1c2121] hover:scale-105 hover:shadow-xl transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-white bg-gradient-to-r from-[#1A7F88] to-[#26A3AD] dark:from-[#26A3AD] dark:to-[#4EFFEF] dark:text-[#0B1120] hover:scale-105 hover:shadow-xl transition-all"
           >
             {t('portfolioPage.cta')}
             <i className="ri-arrow-right-line text-xl"></i>

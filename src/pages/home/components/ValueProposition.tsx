@@ -43,7 +43,7 @@ export default function ValueProposition() {
   };
 
   return (
-    <section id="propuesta" className="py-20 md:py-32 bg-paper dark:bg-[#1a1d1d] transition-colors duration-300">
+    <section id="propuesta" className="py-20 md:py-32 bg-paper dark:bg-navy-deep transition-colors duration-300">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-20">
           <span className="text-sm sm:text-base font-bold text-[#26A3AD] dark:text-[#4EFFEF] tracking-wider uppercase mb-4 block">
@@ -66,7 +66,7 @@ export default function ValueProposition() {
             <div
               key={index}
               onClick={() => setSelectedBenefit(index)}
-              className="group relative bg-paper-soft dark:bg-[#2D3232] rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] transition-all duration-500 hover:shadow-2xl cursor-pointer hover:scale-[1.02]"
+              className="group relative bg-paper-soft dark:bg-navy-soft rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-[#26A3AD] dark:hover:border-[#4EFFEF] transition-all duration-500 hover:shadow-2xl cursor-pointer hover:scale-[1.02]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
                 <img
@@ -118,7 +118,7 @@ export default function ValueProposition() {
                     {modalContent.benefits.map((item: any, idx: number) => (
                       <div
                         key={idx}
-                        className="bg-paper dark:bg-[#1a1d1d] rounded-2xl p-5 border border-gray-200 dark:border-gray-700"
+                        className="bg-paper dark:bg-navy-deep rounded-2xl p-5 border border-gray-200 dark:border-gray-700"
                       >
                         <h5 className="text-lg font-bold text-[#2D3232] dark:text-white mb-2 flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#26A3AD] to-[#4EFFEF]"></div>
@@ -163,7 +163,7 @@ export default function ValueProposition() {
               />
             </div>
 
-            <div className="absolute -bottom-6 sm:-bottom-8 -right-4 sm:-right-8 bg-paper-soft dark:bg-[#2D3232] rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl border border-gray-200 dark:border-gray-800 max-w-[200px] sm:max-w-xs">
+            <div className="absolute -bottom-6 sm:-bottom-8 -right-4 sm:-right-8 bg-paper-soft dark:bg-navy-soft rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl border border-gray-200 dark:border-gray-800 max-w-[200px] sm:max-w-xs">
               <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#4EFFEF] to-[#26A3AD] flex items-center justify-center">
                   <i className="ri-rocket-line text-lg sm:text-xl text-white"></i>
