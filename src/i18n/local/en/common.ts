@@ -588,8 +588,11 @@ export const en = {
       navLabel: 'Full portfolio',
       badge: 'Portfolio',
       title: 'Real work for real businesses',
-      subtitle: 'A selection of identity, commercial design, digital menu, product imagery and web projects made by BoxesMedia360.',
+      subtitle: 'A selection of identity, vehicle wrap, large format, print, apparel, digital menu and web projects made by BoxesMedia360.',
       visit: 'Visit site',
+      photos: 'photos',
+      prev: 'Previous',
+      next: 'Next',
       enlarge: 'Enlarge',
       cta: 'View full portfolio'
     },

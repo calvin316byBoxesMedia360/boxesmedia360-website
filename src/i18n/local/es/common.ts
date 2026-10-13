@@ -590,8 +590,11 @@ export const es = {
       navLabel: 'Portafolio completo',
       badge: 'Portafolio',
       title: 'Trabajo real para negocios reales',
-      subtitle: 'Una selección de proyectos de identidad, diseño comercial, menús digitales, imagen de producto y web hechos por BoxesMedia360.',
+      subtitle: 'Una selección de proyectos de identidad, rotulación vehicular, gran formato, impresos, textil, menús digitales y web hechos por BoxesMedia360.',
       visit: 'Visitar sitio',
+      photos: 'fotos',
+      prev: 'Anterior',
+      next: 'Siguiente',
       enlarge: 'Ampliar',
       cta: 'Ver portafolio completo'
     },

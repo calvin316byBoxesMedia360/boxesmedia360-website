@@ -13,6 +13,7 @@ type Item = {
   width: number;
   height: number;
   url?: string;
+  images?: { src: string; width: number; height: number }[];
 };
 
 const items = portfolio.items as Item[];
@@ -24,6 +25,10 @@ const CATEGORY_EN: Record<string, string> = {
   'Menús digitales': 'Digital menus',
   'Imagen de producto': 'Product imagery',
   'Web': 'Web',
+  'Rotulación vehicular': 'Vehicle wraps & lettering',
+  'Gran formato': 'Large format',
+  'Impresos': 'Print',
+  'Textil': 'Apparel',
 };
 
 export default function PortfolioPage() {
@@ -31,6 +36,10 @@ export default function PortfolioPage() {
   const isEn = i18n.language?.startsWith('en');
   const [active, setActive] = useState('all');
   const [open, setOpen] = useState<Item | null>(null);
+  const [slide, setSlide] = useState(0);
+  const gallery = open ? (open.images?.length ? open.images : [{ src: open.image, width: open.width, height: open.height }]) : [];
+  const openItem = (item: Item) => { setSlide(0); setOpen(item); };
+  const go = (d: number) => setSlide((s) => (s + d + gallery.length) % gallery.length);
 
   const categories = useMemo(() => Array.from(new Set(items.map((i) => i.category))), []);
   const visible = active === 'all' ? items : items.filter((i) => i.category === active);
@@ -43,14 +52,19 @@ export default function PortfolioPage() {
 
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(null);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(null);
+      if (e.key === 'ArrowRight') go(1);
+      if (e.key === 'ArrowLeft') go(-1);
+    };
     document.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [open]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, gallery.length]);
 
   return (
     <div className="min-h-screen bg-paper dark:bg-navy transition-colors duration-300">
@@ -94,8 +108,8 @@ export default function PortfolioPage() {
             >
               <button
                 type="button"
-                onClick={() => setOpen(item)}
-                className="block w-full overflow-hidden cursor-zoom-in"
+                onClick={() => openItem(item)}
+                className="relative block w-full overflow-hidden cursor-zoom-in"
                 aria-label={`${t('portfolioPage.enlarge')}: ${item.title}`}
               >
                 <img
@@ -106,6 +120,11 @@ export default function PortfolioPage() {
                   loading="lazy"
                   className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
                 />
+                {(item.images?.length ?? 0) > 1 && (
+                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm">
+                    <i className="ri-image-2-line"></i> {item.images!.length} {t('portfolioPage.photos')}
+                  </span>
+                )}
               </button>
               <div className="p-5 sm:p-6">
                 <span className="inline-block px-3 py-1 mb-3 rounded-full text-xs font-semibold bg-[#26A3AD]/10 text-[#1A7F88] dark:text-[#4EFFEF] border border-[#26A3AD]/25">
@@ -160,10 +179,32 @@ export default function PortfolioPage() {
           >
             <i className="ri-close-line text-2xl"></i>
           </button>
-          <figure className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
-            <img src={open.image} alt={`${open.client} — ${open.title}`} className="max-h-[80vh] w-auto mx-auto rounded-2xl shadow-2xl" />
-            <figcaption className="mt-4 text-center text-white">
+          <figure className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={gallery[slide]?.src}
+              alt={`${open.client} — ${open.title} (${slide + 1}/${gallery.length})`}
+              className="max-h-[72vh] w-auto mx-auto rounded-2xl shadow-2xl"
+            />
+            {gallery.length > 1 && (
+              <>
+                <button type="button" onClick={() => go(-1)} aria-label={t('portfolioPage.prev')} className="absolute left-0 sm:-left-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center">
+                  <i className="ri-arrow-left-s-line text-3xl"></i>
+                </button>
+                <button type="button" onClick={() => go(1)} aria-label={t('portfolioPage.next')} className="absolute right-0 sm:-right-14 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center">
+                  <i className="ri-arrow-right-s-line text-3xl"></i>
+                </button>
+                <div className="mt-4 flex justify-center gap-2 overflow-x-auto pb-1">
+                  {gallery.map((g, i) => (
+                    <button key={g.src} type="button" onClick={() => setSlide(i)} aria-label={`${i + 1}`} className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition ${i === slide ? 'border-[#4EFFEF]' : 'border-transparent opacity-60 hover:opacity-100'}`}>
+                      <img src={g.src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+            <figcaption className="mt-3 text-center text-white">
               <span className="font-bold">{open.client}</span> · {open.title}
+              {gallery.length > 1 && <span className="text-white/60"> · {slide + 1}/{gallery.length}</span>}
             </figcaption>
           </figure>
         </div>

@@ -41,21 +41,29 @@ await mkdir(resolve('src/data'), { recursive: true });
 const items = [];
 for (const p of data.projects) {
   if (!/^[a-z0-9-]+$/i.test(p.id)) throw new Error(`id inválido: ${p.id}`);
-  const src = await load(p.file, true);
-  const name = `${p.id}.webp`;
-  const img = sharp(src).rotate().resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true });
-  const info = await img.webp({ quality: 80 }).toFile(join(OUT_IMG, name));
+  // Una ficha puede tener una sola imagen (file) o una galería (files); la primera es la portada
+  const sources = Array.isArray(p.files) && p.files.length ? p.files : [p.file];
+  const images = [];
+  for (const [i, file] of sources.entries()) {
+    const src = await load(file, true);
+    const name = sources.length > 1 ? `${p.id}-${String(i + 1).padStart(2, '0')}.webp` : `${p.id}.webp`;
+    // sharp no copia metadatos (EXIF/GPS) salvo que se pida con withMetadata()
+    const img = sharp(src).rotate().resize({ width: 1400, height: 1400, fit: 'inside', withoutEnlargement: true });
+    const info = await img.webp({ quality: 80 }).toFile(join(OUT_IMG, name));
+    images.push({ src: `/portfolio/${name}`, width: info.width, height: info.height });
+    console.log(`✓ ${name} (${info.width}x${info.height}, ${Math.round(info.size / 1024)} KB)`);
+  }
   items.push({
     id: p.id,
     client: String(p.client),
     title: String(p.title),
     category: String(p.category),
-    image: `/portfolio/${name}`,
-    width: info.width,
-    height: info.height,
+    image: images[0].src,
+    width: images[0].width,
+    height: images[0].height,
+    images,
     ...(safeUrl(p.url) ? { url: safeUrl(p.url) } : {}),
   });
-  console.log(`✓ ${p.id} (${info.width}x${info.height}, ${Math.round(info.size / 1024)} KB)`);
 }
 
 await writeFile(OUT_JSON, JSON.stringify({ source: data.repository, items }, null, 2) + '\n');

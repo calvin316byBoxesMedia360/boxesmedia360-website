@@ -8,7 +8,14 @@
       "category": "Identidad",
       "image": "/portfolio/superior.webp",
       "width": 1400,
-      "height": 703
+      "height": 703,
+      "images": [
+        {
+          "src": "/portfolio/superior.webp",
+          "width": 1400,
+          "height": 703
+        }
+      ]
     },
     {
       "id": "print",
@@ -17,7 +24,14 @@
       "category": "Identidad",
       "image": "/portfolio/print.webp",
       "width": 933,
-      "height": 1400
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/print.webp",
+          "width": 933,
+          "height": 1400
+        }
+      ]
     },
     {
       "id": "cupon",
@@ -26,7 +40,14 @@
       "category": "Diseño comercial",
       "image": "/portfolio/cupon.webp",
       "width": 1400,
-      "height": 933
+      "height": 933,
+      "images": [
+        {
+          "src": "/portfolio/cupon.webp",
+          "width": 1400,
+          "height": 933
+        }
+      ]
     },
     {
       "id": "banner",
@@ -35,7 +56,14 @@
       "category": "Diseño comercial",
       "image": "/portfolio/banner.webp",
       "width": 1400,
-      "height": 600
+      "height": 600,
+      "images": [
+        {
+          "src": "/portfolio/banner.webp",
+          "width": 1400,
+          "height": 600
+        }
+      ]
     },
     {
       "id": "bebidas",
@@ -44,7 +72,14 @@
       "category": "Diseño comercial",
       "image": "/portfolio/bebidas.webp",
       "width": 1128,
-      "height": 1400
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/bebidas.webp",
+          "width": 1128,
+          "height": 1400
+        }
+      ]
     },
     {
       "id": "poster",
@@ -53,7 +88,14 @@
       "category": "Diseño comercial",
       "image": "/portfolio/poster.webp",
       "width": 788,
-      "height": 1400
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/poster.webp",
+          "width": 788,
+          "height": 1400
+        }
+      ]
     },
     {
       "id": "mesa",
@@ -62,7 +104,14 @@
       "category": "Diseño comercial",
       "image": "/portfolio/mesa.webp",
       "width": 1400,
-      "height": 933
+      "height": 933,
+      "images": [
+        {
+          "src": "/portfolio/mesa.webp",
+          "width": 1400,
+          "height": 933
+        }
+      ]
     },
     {
       "id": "menlo",
@@ -71,7 +120,14 @@
       "category": "Menús digitales",
       "image": "/portfolio/menlo.webp",
       "width": 1400,
-      "height": 890
+      "height": 890,
+      "images": [
+        {
+          "src": "/portfolio/menlo.webp",
+          "width": 1400,
+          "height": 890
+        }
+      ]
     },
     {
       "id": "menu",
@@ -80,7 +136,14 @@
       "category": "Menús digitales",
       "image": "/portfolio/menu.webp",
       "width": 1400,
-      "height": 810
+      "height": 810,
+      "images": [
+        {
+          "src": "/portfolio/menu.webp",
+          "width": 1400,
+          "height": 810
+        }
+      ]
     },
     {
       "id": "food",
@@ -89,7 +152,14 @@
       "category": "Imagen de producto",
       "image": "/portfolio/food.webp",
       "width": 1400,
-      "height": 932
+      "height": 932,
+      "images": [
+        {
+          "src": "/portfolio/food.webp",
+          "width": 1400,
+          "height": 932
+        }
+      ]
     },
     {
       "id": "drink",
@@ -98,7 +168,14 @@
       "category": "Imagen de producto",
       "image": "/portfolio/drink.webp",
       "width": 1400,
-      "height": 788
+      "height": 788,
+      "images": [
+        {
+          "src": "/portfolio/drink.webp",
+          "width": 1400,
+          "height": 788
+        }
+      ]
     },
     {
       "id": "pan",
@@ -107,7 +184,14 @@
       "category": "Diseño comercial",
       "image": "/portfolio/pan.webp",
       "width": 909,
-      "height": 1400
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/pan.webp",
+          "width": 909,
+          "height": 1400
+        }
+      ]
     },
     {
       "id": "alteno",
@@ -117,6 +201,13 @@
       "image": "/portfolio/alteno.webp",
       "width": 1400,
       "height": 586,
+      "images": [
+        {
+          "src": "/portfolio/alteno.webp",
+          "width": 1400,
+          "height": 586
+        }
+      ],
       "url": "https://elaltenorestaurant.com/"
     },
     {
@@ -127,6 +218,13 @@
       "image": "/portfolio/jaiba.webp",
       "width": 1400,
       "height": 586,
+      "images": [
+        {
+          "src": "/portfolio/jaiba.webp",
+          "width": 1400,
+          "height": 586
+        }
+      ],
       "url": "https://la-jaiba-brava-muestrario.calvin316.chatgpt.site/"
     },
     {
@@ -137,6 +235,13 @@
       "image": "/portfolio/boxes.webp",
       "width": 1400,
       "height": 586,
+      "images": [
+        {
+          "src": "/portfolio/boxes.webp",
+          "width": 1400,
+          "height": 586
+        }
+      ],
       "url": "https://boxesmedia360.com/"
     },
     {
@@ -147,7 +252,331 @@
       "image": "/portfolio/jaiba-contacto.webp",
       "width": 1191,
       "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/jaiba-contacto.webp",
+          "width": 1191,
+          "height": 1400
+        }
+      ],
       "url": "https://la-jaiba-brava-menu.netlify.app/"
+    },
+    {
+      "id": "cjr-flotilla",
+      "client": "CJR – Carlos J. Romero",
+      "title": "Rotulación de flotilla",
+      "category": "Rotulación vehicular",
+      "image": "/portfolio/cjr-flotilla-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/cjr-flotilla-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/cjr-flotilla-02.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/cjr-flotilla-03.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/cjr-flotilla-04.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "godspeed-puertas",
+      "client": "Godspeed Fabrication & Steel",
+      "title": "Rotulación de puertas de camión",
+      "category": "Rotulación vehicular",
+      "image": "/portfolio/godspeed-puertas-01.webp",
+      "width": 1050,
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/godspeed-puertas-01.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-03.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-04.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-05.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "superior-banner",
+      "client": "Superior Filmzz",
+      "title": "Banner promocional",
+      "category": "Gran formato",
+      "image": "/portfolio/superior-banner-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/superior-banner-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-banner-02.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "superior-stickers",
+      "client": "Superior Filmzz",
+      "title": "Stickers troquelados",
+      "category": "Impresos",
+      "image": "/portfolio/superior-stickers-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/superior-stickers-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-stickers-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-stickers-03.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "superior-letreros",
+      "client": "Superior Filmzz",
+      "title": "Letreros de jardín",
+      "category": "Impresos",
+      "image": "/portfolio/superior-letreros-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/superior-letreros-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-letreros-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-letreros-03.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "superior-folleto",
+      "client": "Superior Filmzz",
+      "title": "Folleto tríptico",
+      "category": "Impresos",
+      "image": "/portfolio/superior-folleto-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/superior-folleto-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-folleto-02.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/superior-folleto-03.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/superior-folleto-04.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "loscuates-banner",
+      "client": "Los Cuates Supermercado",
+      "title": "Banner de taquería",
+      "category": "Gran formato",
+      "image": "/portfolio/loscuates-banner-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/loscuates-banner-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-03.webp",
+          "width": 1050,
+          "height": 1400
+        }
+      ]
+    },
+    {
+      "id": "laceiba-banner",
+      "client": "Mariscos La Ceiba",
+      "title": "Banner impreso",
+      "category": "Gran formato",
+      "image": "/portfolio/laceiba-banner.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/laceiba-banner.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "rg-letreros",
+      "client": "R&G Professional Painting",
+      "title": "Letreros y gráficos",
+      "category": "Impresos",
+      "image": "/portfolio/rg-letreros-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/rg-letreros-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/rg-letreros-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/rg-letreros-03.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "supremeas-folleto",
+      "client": "Supremeas.co",
+      "title": "Folleto plegable",
+      "category": "Impresos",
+      "image": "/portfolio/supremeas-folleto-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/supremeas-folleto-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/supremeas-folleto-02.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/supremeas-folleto-03.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/supremeas-folleto-04.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/supremeas-folleto-05.webp",
+          "width": 1050,
+          "height": 1400
+        }
+      ]
+    },
+    {
+      "id": "clinic84-playeras",
+      "client": "Clinic84",
+      "title": "Playeras estampadas",
+      "category": "Textil",
+      "image": "/portfolio/clinic84-playeras.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/clinic84-playeras.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "jackinthebox-playeras",
+      "client": "Jack in the Box",
+      "title": "Playeras promocionales",
+      "category": "Textil",
+      "image": "/portfolio/jackinthebox-playeras-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/jackinthebox-playeras-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/jackinthebox-playeras-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/jackinthebox-playeras-03.webp",
+          "width": 1400,
+          "height": 1050
+        }
+      ]
     }
   ]
 }
