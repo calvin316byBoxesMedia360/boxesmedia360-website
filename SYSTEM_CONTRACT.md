@@ -69,8 +69,8 @@ Navigation → Hero → Services → ValueProposition → Process → Portfolio 
 ## 6. Imágenes y Assets
 
 - Las imágenes propias van en `public/images/` y se referencian como `/images/archivo.jpg`
-- Las imágenes de placeholder usan `readdy.ai/api/search-image` (API externa)
-- **Objetivo a mediano plazo:** reemplazar todas las imágenes de readdy.ai con fotografías reales de BoxesMedia360
+- Las imágenes generadas originalmente con Readdy ya están alojadas localmente en `public/images/stock/` (WebP). No se usa ninguna imagen externa.
+- El portafolio real vive en `public/portfolio/` y se actualiza con `npm run sync:portfolio` desde el repo `boxesmedia360-portfolio`.
 
 ---
 

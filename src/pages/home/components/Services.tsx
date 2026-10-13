@@ -10,7 +10,7 @@ export default function Services() {
       icon: 'ri-palette-line',
       title: t('services.items.branding.title'),
       description: t('services.items.branding.description'),
-      image: 'https://readdy.ai/api/search-image?query=Professional%20brand%20identity%20design%20process%20with%20logo%20sketches%2C%20color%20palettes%2C%20typography%20samples%2C%20and%20brand%20guidelines%20on%20a%20modern%20designer%20desk%2C%20creative%20workspace%20with%20turquoise%20accents%2C%20minimalist%20aesthetic%2C%20high-quality%20professional%20photography&width=600&height=400&seq=service-001&orientation=landscape',
+      image: '/images/stock/service-branding.webp',
       route: '/servicios/identidad-de-marca'
     },
     {
@@ -35,7 +35,7 @@ export default function Services() {
     {
       title: t('services.items.prepress.title'),
       description: t('services.items.prepress.description'),
-      image: 'https://readdy.ai/api/search-image?query=Professional%20pre-press%20production%20workspace%20with%20color%20calibration%20tools%2C%20print%20samples%2C%20technical%20specifications%2C%20modern%20printing%20studio%2C%20clean%20organized%20environment%2C%20professional%20printing%20materials%2C%20contemporary%20production%20facility%20with%20quality%20control%20setup&width=800&height=600&seq=service-005&orientation=landscape',
+      image: '/images/stock/service-prepress.webp',
       route: '/servicios/pre-prensa'
     },
     {

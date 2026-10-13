@@ -68,7 +68,7 @@ export default function Hero() {
     <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-paper-soft dark:bg-[#1a1a1a] transition-colors duration-300"
       style={{
-        backgroundImage: `url('https://readdy.ai/api/search-image?query=Modern%20creative%20studio%20workspace%20with%20design%20equipment%2C%20computers%2C%20and%20professional%20lighting%20setup%2C%20minimalist%20aesthetic%20with%20turquoise%20and%20teal%20accent%20colors%2C%20bright%20and%20airy%20atmosphere%2C%20clean%20organized%20desk%20with%20creative%20tools%2C%20professional%20photography%20studio%20environment%2C%20high-end%20production%20space&width=1920&height=1080&seq=hero-bg-001&orientation=landscape')`,
+        backgroundImage: `url('/images/stock/hero-studio.webp')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

@@ -11,28 +11,28 @@ export default function ValueProposition() {
       icon: 'ri-flashlight-line',
       title: t('valueProposition.features.speed.title'),
       description: t('valueProposition.features.speed.description'),
-      image: 'https://readdy.ai/api/search-image?query=Dynamic%20speed%20motion%20blur%20effect%20with%20rocket%20launching%20upward%2C%20fast%20acceleration%20concept%20with%20vibrant%20energy%20trails%2C%20modern%20minimalist%20design%20with%20turquoise%20and%20teal%20gradient%20colors%2C%20professional%20business%20velocity%20visualization%2C%20clean%20contemporary%20aesthetic%2C%20high%20impact%20visual%20representing%20rapid%20growth%20and%20momentum%2C%20abstract%20speed%20lines%20and%20forward%20movement&width=400&height=400&seq=benefit-speed-radical-001&orientation=squarish',
+      image: '/images/stock/benefit-speed.webp',
       modalKey: 'speed'
     },
     {
       icon: 'ri-stack-line',
       title: t('valueProposition.features.contact.title'),
       description: t('valueProposition.features.contact.description'),
-      image: 'https://readdy.ai/api/search-image?query=Interconnected%20geometric%20shapes%20forming%20unified%20system%2C%20puzzle%20pieces%20perfectly%20aligned%20in%20turquoise%20gradient%2C%20complete%20integrated%20solution%20visualization%2C%20modern%20minimalist%20design%20with%20clean%20lines%2C%20professional%20business%20unity%20concept%2C%20contemporary%20aesthetic%20showing%20seamless%20connection%20and%20harmony%2C%20abstract%20representation%20of%20all-in-one%20service&width=400&height=400&seq=benefit-integration-unified-002&orientation=squarish',
+      image: '/images/stock/benefit-integration.webp',
       modalKey: 'contact'
     },
     {
       icon: 'ri-ai-generate',
       title: t('valueProposition.features.ai.title'),
       description: t('valueProposition.features.ai.description'),
-      image: 'https://readdy.ai/api/search-image?query=Futuristic%20AI%20neural%20network%20visualization%20with%20glowing%20nodes%20and%20connections%2C%20artificial%20intelligence%20brain%20concept%20in%20turquoise%20and%20teal%20colors%2C%20modern%20tech%20innovation%20with%20digital%20particles%2C%20professional%20cutting-edge%20technology%20imagery%2C%20clean%20minimalist%20design%20with%20cyber%20aesthetic%2C%20abstract%20representation%20of%20machine%20learning%20and%20automation%20power&width=400&height=400&seq=benefit-ai-advanced-003&orientation=squarish',
+      image: '/images/stock/benefit-ai.webp',
       modalKey: 'ai'
     },
     {
       icon: 'ri-palette-line',
       title: t('valueProposition.features.aesthetic.title'),
       description: t('valueProposition.features.aesthetic.description'),
-      image: 'https://readdy.ai/api/search-image?query=Perfect%20color%20palette%20harmony%20with%20gradient%20swatches%20arranged%20in%20elegant%20composition%2C%20brand%20consistency%20visualization%20with%20turquoise%20teal%20and%20complementary%20colors%2C%20modern%20minimalist%20design%20aesthetic%2C%20professional%20design%20coherence%20concept%2C%20clean%20contemporary%20style%20showing%20visual%20unity%20across%20multiple%20formats%2C%20abstract%20representation%20of%20flawless%20brand%20execution&width=400&height=400&seq=benefit-aesthetic-perfect-004&orientation=squarish',
+      image: '/images/stock/benefit-aesthetic.webp',
       modalKey: 'aesthetic'
     }
   ];
@@ -156,7 +156,7 @@ export default function ValueProposition() {
             <div className="absolute inset-0 bg-gradient-to-br from-[#4EFFEF]/20 to-[#26A3AD]/20 rounded-3xl blur-3xl"></div>
             <div className="relative rounded-3xl overflow-hidden shadow-2xl max-h-[400px] sm:max-h-[500px] md:max-h-[600px]">
               <img
-                src="https://readdy.ai/api/search-image?query=Professional%20creative%20team%20collaborating%20in%20modern%20bright%20design%20studio%2C%20designers%20working%20on%20multiple%20brand%20identity%20projects%20with%20large%20monitors%20showing%20logo%20designs%20and%20color%20palettes%2C%20contemporary%20minimalist%20workspace%20with%20floor-to-ceiling%20windows%20and%20natural%20lighting%2C%20high-end%20creative%20agency%20interior%20with%20collaborative%20atmosphere%2C%20real%20people%20working%20on%20branding%20materials%2C%20clean%20organized%20environment%20with%20design%20samples%20on%20walls&width=900&height=1100&seq=value-prop-team-workspace-001&orientation=portrait"
+                src="/images/stock/team-workspace.webp"
                 alt={t('valueProposition.badge')}
                 title="BoxesMedia360"
                 className="w-full h-full object-cover object-center"

@@ -26,7 +26,7 @@ El código en GitHub era más antiguo que lo publicado en boxesmedia360.com (bui
 - CI: Node 20, build en cada PR, deploy solo en push a `master`.
 
 **Pendientes:**
-- [ ] Reemplazar imágenes de `readdy.ai` por fotos propias en `public/images/` (hero, 2 servicios, 4 beneficios, equipo, 3 portafolio).
+- [x] Imágenes de `readdy.ai` descargadas y alojadas en `public/images/stock/` (ya no hay dependencia externa).
 - [ ] Activar alias aleatorio de FormSubmit para no exponer el correo en el código.
 - [ ] Migrar el deploy de `FIREBASE_TOKEN` (obsoleto) a cuenta de servicio.
 - [ ] Enlaces reales de Instagram/Facebook en el footer.

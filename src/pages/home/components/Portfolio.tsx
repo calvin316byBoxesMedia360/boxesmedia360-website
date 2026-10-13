@@ -19,21 +19,21 @@ export default function Portfolio() {
       title: t('portfolio.items.project1.title'),
       category: 'branding',
       description: t('portfolio.items.project1.description'),
-      image: '/portfolio/print.webp',
+      image: '/images/stock/portfolio-brand-identity.webp',
       tags: (t('portfolio.items.project1.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project2.title'),
       category: 'digital',
       description: t('portfolio.items.project2.description'),
-      image: '/portfolio/jaiba.webp',
+      image: '/images/stock/portfolio-web.webp',
       tags: (t('portfolio.items.project2.tags', { returnObjects: true }) as string[])
     },
     {
       title: t('portfolio.items.project3.title'),
       category: 'audiovisual',
       description: t('portfolio.items.project3.description'),
-      image: '/portfolio/bebidas.webp',
+      image: '/images/stock/portfolio-audiovisual.webp',
       tags: (t('portfolio.items.project3.tags', { returnObjects: true }) as string[])
     },
     {
