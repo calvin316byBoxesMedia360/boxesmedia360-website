@@ -2,7 +2,7 @@ export const es = {
   common: {
     // Common UI
     learnMore: 'Conoce más',
-    gotIt: 'Entendido',
+    gotIt: 'Seguir explorando',
     close: 'Cerrar',
     tapToSeeMore: 'Toca para ver más',
 
@@ -22,7 +22,7 @@ export const es = {
       title: 'Tu marca lista para',
       titleHighlight: 'facturar hoy',
       description: 'Transformamos tu visión en una identidad de marca completa y lista para el mercado. Diseño, estrategia y producción en un solo lugar.',
-      ctaPrimary: 'Empezar Ahora',
+      ctaPrimary: 'Ver Servicios',
       ctaSecondary: 'Ver Portafolio',
       stats: {
         faster: 'Más Rápido',

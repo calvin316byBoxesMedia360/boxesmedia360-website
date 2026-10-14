@@ -1,7 +1,7 @@
 export const en = {
   common: {
     learnMore: 'Learn more',
-    gotIt: 'Got it',
+    gotIt: 'Keep exploring',
     close: 'Close',
     tapToSeeMore: 'Tap to see more',
     // Navigation
@@ -20,7 +20,7 @@ export const en = {
       title: 'Your brand ready to',
       titleHighlight: 'generate revenue today',
       description: 'We transform your vision into a complete brand identity ready for the market. Design, strategy, and production in one place.',
-      ctaPrimary: 'Start Now',
+      ctaPrimary: 'View Services',
       ctaSecondary: 'View Portfolio',
       stats: {
         faster: 'Faster',

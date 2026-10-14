@@ -6,6 +6,68 @@
 
 ---
 
+## [2026-10-13] — Hero, idioma y vistas previas del portafolio
+
+**Por:** Calvin (con Claude)
+
+**Cambios (en el código, sin commit ni deploy aún):**
+- Hero: el botón principal ahora dice "Ver Servicios" / "View Services" (antes "Empezar Ahora") y hace scroll a `#servicios` en lugar de `#contact`.
+- Selector de idioma: la bandera de España se reemplazó por la de México (nuevo componente `src/components/FlagMX.tsx`, usado en el botón y en el menú desplegable).
+- "Nuestro trabajo": las 6 tarjetas ahora abren una mini ventana (`PortfolioPreview.tsx`) con las fotos reales del portafolio que les corresponden, con navegación (flechas, miniaturas, teclado, Esc), enlace "Visitar sitio" cuando la ficha tiene URL y "Ver portafolio completo". Cada tarjeta muestra un contador de fotos.
+- Relación tarjeta ↔ portafolio: `src/data/portfolio-cards.json` (por `categories` e `ids`). Hoy: Identidad (2), Web (4), Imagen de producto + 4 ids (6), Rotulación vehicular/vitrinas (3), Impresos/Textil + 2 ids (10), Menús digitales/Gran formato (7); los 32 trabajos quedan asignados.
+- `scripts/sync-portfolio.mjs`: al sincronizar muestra cuántos trabajos tiene cada tarjeta y avisa de trabajos sin tarjeta (categorías nuevas) para añadirlos al JSON.
+- Hero en móvil: el video horizontal casi no se apreciaba (franja central de ~27 %, capa muy oscura). Ahora hay un recorte vertical 9:16 (`public/videos/hero-loop-vertical.mp4`, ~0.35 MB, reemplaza a `hero-loop-mobile.mp4`) centrado en el monitor con la lata en pantalla, las latas del set y el diseñador; con poster vertical, capa más ligera y vertical (más oscura arriba, donde va el título), `object-position` a la izquierda y el video desplazado hacia abajo con degradado para que el monitor quede libre bajo los botones. Escritorio sin cambios. En móvil el strobe queda fuera del encuadre: el flash se nota como destello de luz en el fondo.
+- Hero, arranque del video más robusto: se fuerza `muted`/`playsinline` en el DOM (React no escribe `muted` y algunos navegadores bloquean el autoplay), se reintenta `play()` al volver a la pestaña o en el primer gesto, y el video aparece con fade-in (1.5 s) sobre la imagen cuando empieza a reproducir; si no arranca, queda la imagen del estudio.
+- Hero, más fade: el video entra con fade-in de 3 s; el contenido (etiqueta, título, texto, botones y estadísticas) aparece escalonado con fade-in-up (clase `.hero-reveal`, respeta `prefers-reduced-motion`); el borde inferior se funde con la sección de servicios (claro y oscuro) y el indicador de scroll cambia de color para leerse sobre el fundido. En móvil, sombras más fuertes en las estadísticas para leerse sobre el fondo blanco del estudio.
+- Modal de "¿Por qué BoxesMedia360?": el botón "Entendido" / "Got it" pasa a "Seguir explorando" / "Keep exploring" (`gotIt` en i18n).
+- Portafolio, tanda 3 de fotos: 13 nuevas, 28 reemplazadas y 4 retiradas; proyecto nuevo `clinic84-banner` (32 trabajos en total). Revisadas una por una: sin rostros visibles, sin EXIF/GPS, máx 1400 px, 92 archivos / 14.6 MB. Los teléfonos y direcciones que aparecen son los de los negocios en sus propios impresos. Fotos flojas (desenfocadas) que se podrían sustituir: `loscuates-banner-03/05/08`.
+- Verificado en preview: scroll a servicios, bandera en botón y menú, ventana de cada tarjeta (imagen, navegación, enlaces, cierre con Esc); `npm run build` OK.
+
+**Pendientes:**
+- [ ] Revisar a Calvin si las asignaciones por categoría le parecen bien (p. ej., "Campaña Audiovisual" usa fotos de producto y piezas gastronómicas porque aún no hay videos en el portafolio).
+- [ ] Commit y push a `master`: solo con orden de Calvin.
+
+---
+
+## [2026-10-13] — Video de fondo animado en el Hero (integrado)
+
+**Por:** Calvin (con Claude)
+
+**Resultado final (integrado en el código, sin commit ni deploy aún):**
+- Video: un diseñador de espaldas editando una página de producto en el monitor, con la misma lata (bebida energética ficticia) en pantalla y en el set (3 latas frente al fondo blanco) y un strobe con softbox nuevo que dispara un solo flash por ciclo. Fotograma base creado en local (Flux 2 Klein 9B en Wan2GP/Pinokio) y animado con Gemini; la animación local con Wan 2.2 se descartó por deriva de cámara.
+- Loop: ping-pong centrado en el flash (18 s), sin audio, para evitar el salto por la deriva de cámara del clip original.
+- Archivos: `public/videos/hero-loop.webm` (~1.0 MB), `hero-loop.mp4` (~0.8 MB), `hero-loop-mobile.mp4` (~0.35 MB, ≤767 px) y `public/images/stock/hero-poster.jpg`.
+- Código: `src/pages/home/components/Hero.tsx` — `<video autoPlay muted loop playsInline>` detrás de la capa de desenfoque/degradado existente; no se carga con `prefers-reduced-motion` ni `saveData` (queda la imagen `hero-studio.webp`). La CSP (`default-src 'self'`) ya permite el video.
+- Botón "Ver portafolio" del Hero: ahora es un `<Link to="/portafolio">` que abre la página completa del portafolio (antes hacía scroll a la sección `#portafolio` de la home). Verificado en preview.
+- Verificado: `npm run build` OK, reproducción en preview (WebM en escritorio, MP4 ligero en móvil), sin errores de consola.
+- Materiales de trabajo: carpeta `hero-video/` (`agente.md`, `skill.md`, `memoria.md`, fotogramas y clips) y `reports/2026-10-13-hero-video.html`.
+
+**Contexto (inicio de la sesión):**
+Calvin propuso dar movimiento al fondo del Hero: usar la misma imagen actual pero en video, con dos diseñadores moviéndose de forma natural, siempre desenfocados (luego cambió a un solo diseñador).
+
+**Criterios acordados / recomendados:**
+- Loop corto y sin costuras (8–12 s), movimiento lento y sutil; el desenfoque disimula defectos del video generado con IA.
+- Capa de desenfoque leve + overlay `navy` (modo oscuro) / `paper` (modo claro) para mantener legible el texto del hero.
+- Imagen actual del hero como `poster` y respaldo para: móviles con `saveData`, `prefers-reduced-motion` y mientras carga.
+- Peso objetivo 1–2 MB: 720p, sin audio, MP4 (H.264) + WebM, `autoplay muted loop playsInline`. Considerar desactivarlo o usar versión ligera en móvil.
+- Alternativa sin video: siluetas PNG desenfocadas con parallax CSS.
+
+**Cambio de enfoque (misma sesión):** Calvin reemplazó los dos diseñadores por **un solo diseñador sentado frente al monitor**, editando un website o una sesión de fotos, con movimientos mínimos en el cuerpo y en la pantalla (sutiles pero presentes). En los últimos segundos del loop hay un **flash de cámara de fondo**, como si el diseñador hiciera el disparo desde la computadora, y luego el loop vuelve a empezar.
+- El flash sirve además como punto de corte del loop (tapa la costura).
+- Flash accesible: destello cálido de 0.3–0.5 s con subida y bajada, sin blanco puro a máxima intensidad, un solo destello por ciclo; con `prefers-reduced-motion` solo se muestra el poster.
+- Encuadre: diseñador de espaldas o en tres cuartos, a un lado, dejando libre el lado del texto; pantalla abstracta sin texto legible.
+- Duración 8–10 s con el flash hacia el segundo 8–9. Generación en dos partes (escena base en loop + destello) unidas en edición.
+
+**Reporte HTML:** `reports/2026-10-13-hero-video.html`
+
+**Pendientes:**
+- [x] Calvin aprobó el plan, el fotograma, el video y el loop.
+- [x] Integrado en el Hero con fallbacks.
+- [ ] Revisar el Hero a ancho de escritorio completo y en modo claro (el panel de preview era angosto); ajustar `object-position` u opacidad si hace falta.
+- [ ] Commit y push a `master` (publica a producción por GitHub Actions): solo con orden de Calvin.
+
+---
+
 ## [2026-10-13] — Sincronización con la versión en vivo, seguridad y mejoras visuales
 
 **Por:** Calvin (con Claude)

@@ -4,7 +4,7 @@
 export type LegalSection = { heading: string; body: string[] };
 export type LegalDoc = { title: string; updated: string; intro: string; sections: LegalSection[] };
 
-const CONTACT_EMAIL = 'boxesmedia360@gmail.com';
+const CONTACT_EMAIL = 'calvin316@boxesmedia360.com';
 const CONTACT_PHONE = '+1 (831) 673-2181';
 const CONTACT_ADDRESS = 'Hollister, CA 95023, USA';
 const UPDATED = '2026-10-13';

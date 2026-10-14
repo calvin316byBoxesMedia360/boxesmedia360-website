@@ -1,6 +1,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import FlagMX from '../../../components/FlagMX';
 
 export default function Navigation() {
   const { t, i18n } = useTranslation('common');
@@ -167,10 +168,7 @@ export default function Navigation() {
                 >
                   {/* Flag SVG */}
                   {currentLanguage === 'es' ? (
-                    <svg className="w-5 h-4" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-                      <rect fill="#c60b1e" width="900" height="600" />
-                      <rect fill="#ffc400" y="150" width="900" height="300" />
-                    </svg>
+                    <FlagMX className="w-5 h-4" />
                   ) : (
                     <svg className="w-5 h-4" viewBox="0 0 7410 3900" xmlns="http://www.w3.org/2000/svg">
                       <rect fill="#b22234" width="7410" height="3900" />
@@ -213,10 +211,7 @@ export default function Navigation() {
                       onClick={() => changeLanguage('es')}
                       className="w-full flex items-center gap-3 px-4 py-3 hover:bg-paper dark:hover:bg-[#24304A] transition-colors cursor-pointer"
                     >
-                      <svg className="w-5 h-4 flex-shrink-0" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-                        <rect fill="#c60b1e" width="900" height="600" />
-                        <rect fill="#ffc400" y="150" width="900" height="300" />
-                      </svg>
+                      <FlagMX className="w-5 h-4 flex-shrink-0" />
                       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Español</span>
                       {currentLanguage === 'es' && (
                         <i className="ri-check-line text-teal-500 ml-auto"></i>

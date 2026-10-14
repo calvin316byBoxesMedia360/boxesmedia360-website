@@ -68,3 +68,22 @@ for (const p of data.projects) {
 
 await writeFile(OUT_JSON, JSON.stringify({ source: data.repository, items }, null, 2) + '\n');
 console.log(`\n${items.length} proyectos → src/data/portfolio.json`);
+
+// Relación de las tarjetas de "Nuestro trabajo" con el portafolio (src/data/portfolio-cards.json).
+// Los trabajos nuevos se asignan solos por categoría; aquí solo se avisa de lo que quedó sin tarjeta.
+try {
+  const { cards } = JSON.parse(await readFile(resolve('src/data/portfolio-cards.json'), 'utf8'));
+  const mapped = (it) => Object.values(cards).some((c) => c.categories.includes(it.category) || c.ids.includes(it.id));
+  console.log('\nTarjetas de "Nuestro trabajo":');
+  for (const [key, rule] of Object.entries(cards)) {
+    const n = items.filter((it) => rule.categories.includes(it.category) || rule.ids.includes(it.id)).length;
+    console.log(`  ${key}: ${n} trabajo(s)${n === 0 ? '  ⚠ sin trabajos, revisa sus categorías' : ''}`);
+  }
+  const orphans = items.filter((it) => !mapped(it));
+  if (orphans.length) {
+    console.warn('\n⚠ Trabajos sin tarjeta (agrega su categoría o id en src/data/portfolio-cards.json):');
+    for (const it of orphans) console.warn(`  - ${it.id} (${it.category})`);
+  }
+} catch (err) {
+  console.warn('\nNo se pudo revisar portfolio-cards.json:', err.message);
+}

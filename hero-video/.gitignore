@@ -1,0 +1,6 @@
+# Material de trabajo pesado (clips y fotogramas): no se versiona; los archivos finales viven en public/videos/
+*.mp4
+*.webm
+*.jpg
+*.png
+dist/

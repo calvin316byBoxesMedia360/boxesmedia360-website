@@ -1,10 +1,27 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import portfolioData from '../../../data/portfolio.json';
+import cardRules from '../../../data/portfolio-cards.json';
+import PortfolioPreview, { type PreviewItem } from './PortfolioPreview';
+
+type PortfolioItem = PreviewItem & { category: string };
+type CardRule = { categories: string[]; ids: string[] };
+
+const portfolioItems = portfolioData.items as PortfolioItem[];
+const rules = cardRules.cards as Record<string, CardRule>;
+
+// Trabajos del portafolio que corresponden a una tarjeta (por categoría o id, ver src/data/portfolio-cards.json)
+function itemsForCard(cardKey: string): PortfolioItem[] {
+  const rule = rules[cardKey];
+  if (!rule) return [];
+  return portfolioItems.filter((item) => rule.categories.includes(item.category) || rule.ids.includes(item.id));
+}
 
 export default function Portfolio() {
   const { t } = useTranslation('common');
   const [activeCategory, setActiveCategory] = useState('all');
+  const [preview, setPreview] = useState<{ title: string; items: PortfolioItem[] } | null>(null);
 
   const categories = [
     { key: 'all', label: t('portfolio.categories.all') },
@@ -16,6 +33,7 @@ export default function Portfolio() {
 
   const projects = [
     {
+      key: 'project1',
       title: t('portfolio.items.project1.title'),
       category: 'branding',
       description: t('portfolio.items.project1.description'),
@@ -23,6 +41,7 @@ export default function Portfolio() {
       tags: (t('portfolio.items.project1.tags', { returnObjects: true }) as string[])
     },
     {
+      key: 'project2',
       title: t('portfolio.items.project2.title'),
       category: 'digital',
       description: t('portfolio.items.project2.description'),
@@ -30,6 +49,7 @@ export default function Portfolio() {
       tags: (t('portfolio.items.project2.tags', { returnObjects: true }) as string[])
     },
     {
+      key: 'project3',
       title: t('portfolio.items.project3.title'),
       category: 'audiovisual',
       description: t('portfolio.items.project3.description'),
@@ -37,6 +57,7 @@ export default function Portfolio() {
       tags: (t('portfolio.items.project3.tags', { returnObjects: true }) as string[])
     },
     {
+      key: 'project4',
       title: t('portfolio.items.project4.title'),
       category: 'spaces',
       description: t('portfolio.items.project4.description'),
@@ -44,6 +65,7 @@ export default function Portfolio() {
       tags: (t('portfolio.items.project4.tags', { returnObjects: true }) as string[])
     },
     {
+      key: 'project5',
       title: t('portfolio.items.project5.title'),
       category: 'branding',
       description: t('portfolio.items.project5.description'),
@@ -51,6 +73,7 @@ export default function Portfolio() {
       tags: (t('portfolio.items.project5.tags', { returnObjects: true }) as string[])
     },
     {
+      key: 'project6',
       title: t('portfolio.items.project6.title'),
       category: 'spaces',
       description: t('portfolio.items.project6.description'),
@@ -94,9 +117,17 @@ export default function Portfolio() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => {
+            const related = itemsForCard(project.key);
+            const openPreview = () => related.length && setPreview({ title: project.title, items: related });
+            return (
             <article
-              key={index}
+              key={project.key}
+              role={related.length ? 'button' : undefined}
+              tabIndex={related.length ? 0 : undefined}
+              aria-label={related.length ? `${t('portfolioPage.enlarge')}: ${project.title}` : undefined}
+              onClick={openPreview}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openPreview(); } }}
               className="group relative bg-paper-soft dark:bg-navy-soft rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 cursor-pointer"
             >
               <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
@@ -111,6 +142,12 @@ export default function Portfolio() {
                 <div className="absolute top-4 md:top-6 right-4 md:right-6 w-12 h-12 md:w-14 md:h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0 border border-white/30">
                   <i className="ri-arrow-right-up-line text-xl md:text-2xl text-white"></i>
                 </div>
+
+                {related.length > 0 && (
+                  <span className="absolute bottom-3 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-semibold">
+                    <i className="ri-image-2-line"></i> {related.length} {t('portfolioPage.photos')}
+                  </span>
+                )}
               </div>
 
               <div className="relative p-6 md:p-8">
@@ -134,7 +171,8 @@ export default function Portfolio() {
                 </p>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-12 md:mt-16 text-center">
@@ -147,6 +185,10 @@ export default function Portfolio() {
           </Link>
         </div>
       </div>
+
+      {preview && (
+        <PortfolioPreview heading={preview.title} items={preview.items} onClose={() => setPreview(null)} />
+      )}
     </section>
   );
 }
