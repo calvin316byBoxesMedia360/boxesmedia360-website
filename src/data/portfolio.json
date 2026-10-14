@@ -360,20 +360,30 @@
       "category": "Gran formato",
       "image": "/portfolio/superior-banner-01.webp",
       "width": 1400,
-      "height": 1050,
+      "height": 646,
       "images": [
         {
           "src": "/portfolio/superior-banner-01.webp",
           "width": 1400,
-          "height": 1050
+          "height": 646
         },
         {
           "src": "/portfolio/superior-banner-02.webp",
           "width": 1400,
-          "height": 1050
+          "height": 652
         },
         {
           "src": "/portfolio/superior-banner-03.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-banner-04.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-banner-05.webp",
           "width": 1400,
           "height": 1050
         }
@@ -407,6 +417,11 @@
           "src": "/portfolio/superior-stickers-04.webp",
           "width": 1400,
           "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-stickers-05.webp",
+          "width": 1400,
+          "height": 1050
         }
       ]
     },
@@ -426,8 +441,8 @@
         },
         {
           "src": "/portfolio/superior-letreros-02.webp",
-          "width": 1400,
-          "height": 1050
+          "width": 1050,
+          "height": 1400
         },
         {
           "src": "/portfolio/superior-letreros-03.webp",
@@ -462,8 +477,8 @@
         },
         {
           "src": "/portfolio/superior-folleto-03.webp",
-          "width": 1050,
-          "height": 1400
+          "width": 1400,
+          "height": 1050
         },
         {
           "src": "/portfolio/superior-folleto-04.webp",
@@ -514,7 +529,37 @@
         {
           "src": "/portfolio/loscuates-banner-07.webp",
           "width": 1400,
-          "height": 647
+          "height": 794
+        },
+        {
+          "src": "/portfolio/loscuates-banner-08.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-09.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/loscuates-banner-10.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-11.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-12.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-13.webp",
+          "width": 1400,
+          "height": 1050
         }
       ]
     },
@@ -539,6 +584,11 @@
         },
         {
           "src": "/portfolio/laceiba-banner-03.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/laceiba-banner-04.webp",
           "width": 1400,
           "height": 1050
         }
@@ -572,7 +622,7 @@
     },
     {
       "id": "supremeas-folleto",
-      "client": "Supremeas.co",
+      "client": "Supremeas",
       "title": "Folleto plegable",
       "category": "Impresos",
       "image": "/portfolio/supremeas-folleto-01.webp",
@@ -596,13 +646,13 @@
         },
         {
           "src": "/portfolio/supremeas-folleto-04.webp",
-          "width": 1050,
-          "height": 1400
+          "width": 1400,
+          "height": 1050
         },
         {
           "src": "/portfolio/supremeas-folleto-05.webp",
-          "width": 1050,
-          "height": 1400
+          "width": 1400,
+          "height": 847
         }
       ]
     },
@@ -622,37 +672,43 @@
         },
         {
           "src": "/portfolio/clinic84-playeras-02.webp",
-          "width": 1050,
-          "height": 1400
+          "width": 1400,
+          "height": 1050
         },
         {
           "src": "/portfolio/clinic84-playeras-03.webp",
-          "width": 1050,
-          "height": 1400
+          "width": 1400,
+          "height": 1050
         },
         {
           "src": "/portfolio/clinic84-playeras-04.webp",
-          "width": 1400,
-          "height": 1050
+          "width": 924,
+          "height": 1060
         },
         {
           "src": "/portfolio/clinic84-playeras-05.webp",
-          "width": 1400,
-          "height": 1050
-        },
-        {
-          "src": "/portfolio/clinic84-playeras-06.webp",
-          "width": 1400,
-          "height": 1050
-        },
-        {
-          "src": "/portfolio/clinic84-playeras-07.webp",
-          "width": 647,
+          "width": 898,
           "height": 1400
+        }
+      ]
+    },
+    {
+      "id": "clinic84-banner",
+      "client": "Clinic84",
+      "title": "Banner promocional",
+      "category": "Gran formato",
+      "image": "/portfolio/clinic84-banner-01.webp",
+      "width": 1400,
+      "height": 1050,
+      "images": [
+        {
+          "src": "/portfolio/clinic84-banner-01.webp",
+          "width": 1400,
+          "height": 1050
         },
         {
-          "src": "/portfolio/clinic84-playeras-08.webp",
-          "width": 647,
+          "src": "/portfolio/clinic84-banner-02.webp",
+          "width": 1050,
           "height": 1400
         }
       ]
@@ -701,6 +757,11 @@
           "src": "/portfolio/cjr-letreros-02.webp",
           "width": 647,
           "height": 1400
+        },
+        {
+          "src": "/portfolio/cjr-letreros-03.webp",
+          "width": 1400,
+          "height": 647
         }
       ]
     },
@@ -722,11 +783,6 @@
           "src": "/portfolio/angels-vitrina-02.webp",
           "width": 1400,
           "height": 647
-        },
-        {
-          "src": "/portfolio/angels-vitrina-03.webp",
-          "width": 1400,
-          "height": 647
         }
       ]
     },
@@ -736,13 +792,13 @@
       "title": "Tarjetas de presentación y stickers QR de menú",
       "category": "Impresos",
       "image": "/portfolio/loscuates-impresos-01.webp",
-      "width": 647,
-      "height": 1400,
+      "width": 1400,
+      "height": 647,
       "images": [
         {
           "src": "/portfolio/loscuates-impresos-01.webp",
-          "width": 647,
-          "height": 1400
+          "width": 1400,
+          "height": 647
         },
         {
           "src": "/portfolio/loscuates-impresos-02.webp",
