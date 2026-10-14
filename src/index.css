@@ -132,3 +132,9 @@
 @media (prefers-reduced-motion: reduce) {
   .floating-shape { animation: none; opacity: 0.5; }
 }
+
+/* Aparición escalonada del contenido del Hero (el retraso va en style) */
+.hero-reveal { animation: fadeInUp 1.1s ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal { animation: none; }
+}

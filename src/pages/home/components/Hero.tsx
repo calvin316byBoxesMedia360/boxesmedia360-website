@@ -124,7 +124,7 @@ export default function Hero() {
         <video
           ref={videoRef}
           onPlaying={() => setVideoPlaying(true)}
-          className={`absolute inset-0 h-full w-full object-cover object-[12%_50%] max-md:translate-y-[26%] max-md:[mask-image:linear-gradient(to_bottom,transparent_0%,#000_32%)] md:object-center transition-opacity duration-[1500ms] ease-out ${videoPlaying ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 h-full w-full object-cover object-[12%_50%] max-md:translate-y-[26%] max-md:[mask-image:linear-gradient(to_bottom,transparent_0%,#000_32%)] md:object-center transition-opacity duration-[3000ms] ease-out ${videoPlaying ? 'opacity-100' : 'opacity-0'}`}
           autoPlay
           muted
           loop
@@ -143,26 +143,29 @@ export default function Hero() {
 
       {/* Capa de desenfoque: la imagen se sigue viendo, pero el texto se lee con claridad */}
       {/* Móvil: capa vertical y ligera para que se aprecie el video (más oscura arriba, donde va el título). Escritorio: degradado lateral */}
-      <div className="absolute inset-0 backdrop-blur-[1px] bg-gradient-to-b from-black/75 via-black/35 to-black/30 dark:from-[#0B1120]/80 dark:via-[#0B1120]/40 dark:to-[#0B1120]/35 md:backdrop-blur-[5px] md:bg-gradient-to-r md:from-black/75 md:via-black/55 md:to-black/30 md:dark:from-[#0B1120]/90 md:dark:via-[#0B1120]/70 md:dark:to-[#0B1120]/35"></div>
+      <div className="absolute inset-0 backdrop-blur-[1px] bg-gradient-to-b from-black/75 via-black/45 to-black/35 dark:from-[#0B1120]/80 dark:via-[#0B1120]/50 dark:to-[#0B1120]/35 md:backdrop-blur-[5px] md:bg-gradient-to-r md:from-black/75 md:via-black/55 md:to-black/30 md:dark:from-[#0B1120]/90 md:dark:via-[#0B1120]/70 md:dark:to-[#0B1120]/35"></div>
+
+      {/* Fundido del borde inferior hacia la sección de servicios */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 md:h-40 bg-gradient-to-t from-paper-soft dark:from-navy to-transparent"></div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
         <div className="max-w-3xl">
-          <div className="mb-6 sm:mb-8">
+          <div className="hero-reveal mb-6 sm:mb-8" style={{ animationDelay: '0.2s' }}>
             <span className="text-sm sm:text-base font-medium text-[#4EFFEF] tracking-wide" style={{ fontFamily: '"Syne", sans-serif' }}>
               AI Creative Design Studio
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight" style={{ fontFamily: '"Syne", sans-serif' }}>
+          <h2 className="hero-reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight" style={{ fontFamily: '"Syne", sans-serif', animationDelay: '0.45s' }}>
             <span className="text-white dark:text-white drop-shadow-lg">{t('hero.title')} </span>
             <span className="text-[#4EFFEF] dark:text-[#4EFFEF] drop-shadow-lg">{t('hero.titleHighlight')}</span>
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-gray-100 dark:text-gray-300 mb-8 sm:mb-12 leading-relaxed max-w-2xl drop-shadow-md">
+          <p className="hero-reveal text-base sm:text-lg md:text-xl text-gray-100 dark:text-gray-300 mb-8 sm:mb-12 leading-relaxed max-w-2xl drop-shadow-md" style={{ animationDelay: '0.7s' }}>
             {t('hero.description')}
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          <div className="hero-reveal flex flex-col sm:flex-row gap-4 sm:gap-6" style={{ animationDelay: '0.95s' }}>
             <button onClick={() => scrollToSection('servicios')} className="group relative bg-gradient-to-r from-[#4EFFEF] to-[#26A3AD] text-[#2D3232] dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:scale-105 transition-all cursor-pointer whitespace-nowrap text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(78,255,239,0.3)] hover:shadow-[0_0_30px_rgba(78,255,239,0.6)]">
               {t('hero.ctaPrimary')}
               <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform"></i>
@@ -172,7 +175,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="mt-12 sm:mt-16 flex flex-wrap items-center gap-6 sm:gap-8">
+          <div className="hero-reveal mt-12 sm:mt-16 flex flex-wrap items-center gap-6 sm:gap-8" style={{ animationDelay: '1.2s' }}>
             {statsData.map((stat) => (
               <button
                 key={stat.id}
@@ -183,8 +186,8 @@ export default function Hero() {
                   <i className={`${stat.icon} text-white text-xl sm:text-2xl group-hover:scale-110 transition-transform`}></i>
                 </div>
                 <div>
-                  <p className="text-xl sm:text-2xl font-bold text-white dark:text-white drop-shadow-md group-hover:text-[#4EFFEF] transition-colors" style={{ fontFamily: '"Syne", sans-serif' }}>{stat.value}</p>
-                  <p className="text-xs sm:text-sm text-gray-200 dark:text-gray-400 drop-shadow-sm group-hover:text-white transition-colors">{stat.label}</p>
+                  <p className="text-xl sm:text-2xl font-bold text-white dark:text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] group-hover:text-[#4EFFEF] transition-colors" style={{ fontFamily: '"Syne", sans-serif' }}>{stat.value}</p>
+                  <p className="text-xs sm:text-sm text-gray-100 dark:text-gray-300 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] group-hover:text-white transition-colors">{stat.label}</p>
                 </div>
               </button>
             ))}
@@ -195,7 +198,7 @@ export default function Hero() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-        <button onClick={() => scrollToSection('servicios')} className="flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors cursor-pointer">
+        <button onClick={() => scrollToSection('servicios')} className="flex flex-col items-center gap-2 text-[#2D3232]/70 hover:text-[#2D3232] dark:text-white/50 dark:hover:text-white transition-colors cursor-pointer">
           <span className="text-xs uppercase tracking-widest">Scroll</span>
           <i className="ri-arrow-down-line text-xl"></i>
         </button>
