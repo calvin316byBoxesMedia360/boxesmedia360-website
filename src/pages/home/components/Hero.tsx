@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // El video de fondo solo se carga si el usuario no pidió menos movimiento ni ahorro de datos.
@@ -15,11 +15,41 @@ export default function Hero() {
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setShowVideo(canPlayBackgroundVideo());
     setIsMobile(window.matchMedia('(max-width: 767px)').matches);
   }, []);
+
+  // React no escribe el atributo `muted` en el DOM y algunos navegadores bloquean el autoplay por eso;
+  // además se reintenta al volver a la pestaña o en el primer gesto del usuario.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!showVideo || !video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    const markPlaying = () => setVideoPlaying(true);
+    const tryPlay = () => { video.play().then(markPlaying).catch(() => {}); };
+    const onVisible = () => { if (!document.hidden) tryPlay(); };
+    if (!video.paused && video.readyState >= 3) markPlaying();
+    tryPlay();
+    video.addEventListener('playing', markPlaying);
+    video.addEventListener('canplay', tryPlay);
+    document.addEventListener('visibilitychange', onVisible);
+    window.addEventListener('pointerdown', tryPlay, { once: true });
+    window.addEventListener('scroll', tryPlay, { once: true, passive: true });
+    return () => {
+      video.removeEventListener('playing', markPlaying);
+      video.removeEventListener('canplay', tryPlay);
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('pointerdown', tryPlay);
+      window.removeEventListener('scroll', tryPlay);
+    };
+  }, [showVideo]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -92,7 +122,9 @@ export default function Hero() {
       {/* Video de fondo (loop de un diseñador editando en el estudio). La imagen del estilo inline queda de respaldo */}
       {showVideo && (
         <video
-          className="absolute inset-0 h-full w-full object-cover object-[12%_50%] max-md:translate-y-[26%] max-md:[mask-image:linear-gradient(to_bottom,transparent_0%,#000_32%)] md:object-center"
+          ref={videoRef}
+          onPlaying={() => setVideoPlaying(true)}
+          className={`absolute inset-0 h-full w-full object-cover object-[12%_50%] max-md:translate-y-[26%] max-md:[mask-image:linear-gradient(to_bottom,transparent_0%,#000_32%)] md:object-center transition-opacity duration-[1500ms] ease-out ${videoPlaying ? 'opacity-100' : 'opacity-0'}`}
           autoPlay
           muted
           loop
