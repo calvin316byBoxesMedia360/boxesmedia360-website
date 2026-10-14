@@ -289,6 +289,16 @@
           "src": "/portfolio/cjr-flotilla-04.webp",
           "width": 1400,
           "height": 1050
+        },
+        {
+          "src": "/portfolio/cjr-flotilla-05.webp",
+          "width": 1400,
+          "height": 647
+        },
+        {
+          "src": "/portfolio/cjr-flotilla-06.webp",
+          "width": 1400,
+          "height": 647
         }
       ]
     },
@@ -325,6 +335,21 @@
           "src": "/portfolio/godspeed-puertas-05.webp",
           "width": 1400,
           "height": 1050
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-06.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-07.webp",
+          "width": 1400,
+          "height": 647
+        },
+        {
+          "src": "/portfolio/godspeed-puertas-08.webp",
+          "width": 1400,
+          "height": 647
         }
       ]
     },
@@ -344,6 +369,11 @@
         },
         {
           "src": "/portfolio/superior-banner-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-banner-03.webp",
           "width": 1400,
           "height": 1050
         }
@@ -372,6 +402,11 @@
           "src": "/portfolio/superior-stickers-03.webp",
           "width": 1400,
           "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-stickers-04.webp",
+          "width": 1400,
+          "height": 1050
         }
       ]
     },
@@ -396,6 +431,11 @@
         },
         {
           "src": "/portfolio/superior-letreros-03.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/superior-letreros-04.webp",
           "width": 1400,
           "height": 1050
         }
@@ -435,7 +475,7 @@
     {
       "id": "loscuates-banner",
       "client": "Los Cuates Supermercado",
-      "title": "Banner de taquería",
+      "title": "Banners de taquería y promociones",
       "category": "Gran formato",
       "image": "/portfolio/loscuates-banner-01.webp",
       "width": 1400,
@@ -455,20 +495,50 @@
           "src": "/portfolio/loscuates-banner-03.webp",
           "width": 1050,
           "height": 1400
+        },
+        {
+          "src": "/portfolio/loscuates-banner-04.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-05.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/loscuates-banner-06.webp",
+          "width": 1400,
+          "height": 650
+        },
+        {
+          "src": "/portfolio/loscuates-banner-07.webp",
+          "width": 1400,
+          "height": 647
         }
       ]
     },
     {
       "id": "laceiba-banner",
       "client": "Mariscos La Ceiba",
-      "title": "Banner impreso",
+      "title": "Banners impresos",
       "category": "Gran formato",
-      "image": "/portfolio/laceiba-banner.webp",
+      "image": "/portfolio/laceiba-banner-01.webp",
       "width": 1400,
       "height": 1050,
       "images": [
         {
-          "src": "/portfolio/laceiba-banner.webp",
+          "src": "/portfolio/laceiba-banner-01.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/laceiba-banner-02.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/laceiba-banner-03.webp",
           "width": 1400,
           "height": 1050
         }
@@ -539,16 +609,51 @@
     {
       "id": "clinic84-playeras",
       "client": "Clinic84",
-      "title": "Playeras estampadas",
+      "title": "Playeras y sudaderas estampadas",
       "category": "Textil",
-      "image": "/portfolio/clinic84-playeras.webp",
+      "image": "/portfolio/clinic84-playeras-01.webp",
       "width": 1400,
       "height": 1050,
       "images": [
         {
-          "src": "/portfolio/clinic84-playeras.webp",
+          "src": "/portfolio/clinic84-playeras-01.webp",
           "width": 1400,
           "height": 1050
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-02.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-03.webp",
+          "width": 1050,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-04.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-05.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-06.webp",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-07.webp",
+          "width": 647,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/clinic84-playeras-08.webp",
+          "width": 647,
+          "height": 1400
         }
       ]
     },
@@ -575,6 +680,84 @@
           "src": "/portfolio/jackinthebox-playeras-03.webp",
           "width": 1400,
           "height": 1050
+        }
+      ]
+    },
+    {
+      "id": "cjr-letreros",
+      "client": "CJR – Carlos J. Romero",
+      "title": "Letreros de jardín con QR",
+      "category": "Gran formato",
+      "image": "/portfolio/cjr-letreros-01.webp",
+      "width": 1027,
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/cjr-letreros-01.webp",
+          "width": 1027,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/cjr-letreros-02.webp",
+          "width": 647,
+          "height": 1400
+        }
+      ]
+    },
+    {
+      "id": "angels-vitrina",
+      "client": "Angel's Auto Care Center",
+      "title": "Vinil de corte para vitrina",
+      "category": "Rotulación de vitrinas",
+      "image": "/portfolio/angels-vitrina-01.webp",
+      "width": 647,
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/angels-vitrina-01.webp",
+          "width": 647,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/angels-vitrina-02.webp",
+          "width": 1400,
+          "height": 647
+        },
+        {
+          "src": "/portfolio/angels-vitrina-03.webp",
+          "width": 1400,
+          "height": 647
+        }
+      ]
+    },
+    {
+      "id": "loscuates-impresos",
+      "client": "Los Cuates",
+      "title": "Tarjetas de presentación y stickers QR de menú",
+      "category": "Impresos",
+      "image": "/portfolio/loscuates-impresos-01.webp",
+      "width": 647,
+      "height": 1400,
+      "images": [
+        {
+          "src": "/portfolio/loscuates-impresos-01.webp",
+          "width": 647,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/loscuates-impresos-02.webp",
+          "width": 1400,
+          "height": 647
+        },
+        {
+          "src": "/portfolio/loscuates-impresos-03.webp",
+          "width": 647,
+          "height": 1400
+        },
+        {
+          "src": "/portfolio/loscuates-impresos-04.webp",
+          "width": 647,
+          "height": 1400
         }
       ]
     }

@@ -29,6 +29,7 @@ const CATEGORY_EN: Record<string, string> = {
   'Gran formato': 'Large format',
   'Impresos': 'Print',
   'Textil': 'Apparel',
+  'Rotulación de vitrinas': 'Storefront vinyl',
 };
 
 export default function PortfolioPage() {
