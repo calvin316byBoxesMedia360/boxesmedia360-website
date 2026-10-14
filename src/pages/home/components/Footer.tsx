@@ -70,8 +70,8 @@ export default function Footer() {
             <ul className="space-y-3 sm:space-y-4">
               <li className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-400">
                 <i className="ri-mail-line text-[#4EFFEF] text-lg sm:text-xl mt-0.5"></i>
-                <a href="mailto:boxesmedia360@gmail.com" className="hover:text-[#4EFFEF] transition-colors break-all">
-                  boxesmedia360@gmail.com
+                <a href="mailto:calvin316@boxesmedia360.com" className="hover:text-[#4EFFEF] transition-colors break-all">
+                  calvin316@boxesmedia360.com
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-400">
