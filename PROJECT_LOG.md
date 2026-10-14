@@ -16,6 +16,7 @@
 - "Nuestro trabajo": las 6 tarjetas ahora abren una mini ventana (`PortfolioPreview.tsx`) con las fotos reales del portafolio que les corresponden, con navegación (flechas, miniaturas, teclado, Esc), enlace "Visitar sitio" cuando la ficha tiene URL y "Ver portafolio completo". Cada tarjeta muestra un contador de fotos.
 - Relación tarjeta ↔ portafolio: `src/data/portfolio-cards.json` (por `categories` e `ids`). Hoy: Identidad (2), Web (4), Imagen de producto + 4 ids (6), Rotulación vehicular/vitrinas (3), Impresos/Textil + 2 ids (10), Menús digitales/Gran formato (7); los 32 trabajos quedan asignados.
 - `scripts/sync-portfolio.mjs`: al sincronizar muestra cuántos trabajos tiene cada tarjeta y avisa de trabajos sin tarjeta (categorías nuevas) para añadirlos al JSON.
+- Portafolio, tanda 3 de fotos: 13 nuevas, 28 reemplazadas y 4 retiradas; proyecto nuevo `clinic84-banner` (32 trabajos en total). Revisadas una por una: sin rostros visibles, sin EXIF/GPS, máx 1400 px, 92 archivos / 14.6 MB. Los teléfonos y direcciones que aparecen son los de los negocios en sus propios impresos. Fotos flojas (desenfocadas) que se podrían sustituir: `loscuates-banner-03/05/08`.
 - Verificado en preview: scroll a servicios, bandera en botón y menú, ventana de cada tarjeta (imagen, navegación, enlaces, cierre con Esc); `npm run build` OK.
 
 **Pendientes:**
