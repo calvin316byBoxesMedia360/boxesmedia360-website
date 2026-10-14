@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { FORM_ENDPOINT } from '../../../config/contact';
 import { useTranslation } from 'react-i18next';
 
 export default function Scheduling() {
@@ -98,7 +99,7 @@ export default function Scheduling() {
 
       // Use Formsubmit.co for email delivery
       // Endpoint AJAX de FormSubmit (el endpoint normal devuelve HTML/redirect y no sirve para fetch)
-      const formUrl = 'https://formsubmit.co/ajax/calvin316@boxesmedia360.com';
+      const formUrl = FORM_ENDPOINT;
 
       const response = await fetch(formUrl, {
         method: 'POST',
