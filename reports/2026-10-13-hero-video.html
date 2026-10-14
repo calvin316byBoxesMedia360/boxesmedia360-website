@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Reporte: video de fondo del Hero</title>
+<style>
+  :root {
+    --bg: #E6DFD2;        /* paper */
+    --bg-soft: #EFE9DE;
+    --card: #F4EFE6;
+    --text: #111827;      /* navy */
+    --muted: #4b5563;
+    --line: #d2c9b8;
+    --accent: #b45309;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111827; --bg-soft: #172033; --card: #1c2740;
+      --text: #E6DFD2; --muted: #a8b0c0; --line: #2b3855; --accent: #f59e0b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111827; --bg-soft: #172033; --card: #1c2740;
+    --text: #E6DFD2; --muted: #a8b0c0; --line: #2b3855; --accent: #f59e0b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 820px; margin: 0 auto; padding: 32px 16px 64px; }
+  header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  h1 { font-size: 1.8rem; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 32px 0 12px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+  .meta { color: var(--muted); font-size: .9rem; }
+  button.theme {
+    background: var(--card); color: var(--text); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 14px; cursor: pointer; font: inherit; font-size: .85rem;
+  }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .grid .card h3 { margin: 0 0 6px; font-size: 1rem; }
+  .grid .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  .tag { display: inline-block; font-size: .75rem; padding: 2px 10px; border-radius: 999px;
+         border: 1px solid var(--accent); color: var(--accent); margin-right: 6px; }
+  .note { border-left: 4px solid var(--accent); background: var(--bg-soft); padding: 12px 16px; border-radius: 0 8px 8px 0; }
+  .check { list-style: none; padding: 0; }
+  .check li::before { content: "☐"; margin-right: 8px; color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+  .timeline { display: flex; height: 36px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); font-size: .75rem; }
+  .timeline div { display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 4px; }
+  .t-base { flex: 78; background: var(--card); color: var(--muted); }
+  .t-flash { flex: 8; background: #fde68a; color: #111827; font-weight: 700; }
+  .t-back { flex: 14; background: var(--bg-soft); color: var(--muted); }
+  img.ref { width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+  figcaption { color: var(--muted); font-size: .85rem; margin-top: 6px; }
+  figure { margin: 0; }
+  footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Video de fondo animado en el Hero</h1>
+      <div class="meta">BoxesMedia360 · 13 oct 2026 · Calvin (con Claude) · <span class="tag">Integrado · v3</span></div>
+    </div>
+    <button class="theme" id="toggle" type="button">Modo claro / oscuro</button>
+  </header>
+
+  <h2>Resumen</h2>
+  <div class="card">
+    <p>Calvin cambió el enfoque: en lugar de dos diseñadores, <strong>un solo diseñador sentado frente al monitor</strong>, editando un website o una sesión de fotos, con movimientos mínimos en el cuerpo y en la pantalla, sutiles pero presentes. En los últimos segundos del loop hay un <strong>flash de cámara de fondo</strong>, como si el diseñador hubiera hecho el disparo desde la computadora, y luego el loop vuelve a empezar.</p>
+    <p><strong>No se modificó código ni se generó ningún video.</strong> Falta la aprobación de Calvin para generar pruebas.</p>
+  </div>
+
+  <h2>Estado final (13 oct 2026)</h2>
+  <div class="note">
+    <ul>
+      <li><strong>Integrado en el Hero</strong> (<code>Hero.tsx</code>), sin commit ni deploy todavía.</li>
+      <li>Diseñador de espaldas editando una página de producto; la <strong>misma lata</strong> aparece en el monitor y en el set (3 latas frente al fondo blanco). Un strobe con softbox nuevo dispara un solo flash por ciclo.</li>
+      <li>Fotograma base creado en local (Flux 2 Klein 9B vía Wan2GP/Pinokio); video generado con Gemini. La animación local con Wan 2.2 se descartó por deriva de cámara.</li>
+      <li>Loop <strong>ping-pong centrado en el flash</strong>, 18 s, sin audio, para evitar el salto del clip original.</li>
+      <li>Archivos: <code>hero-loop.webm</code> (~1.0 MB), <code>hero-loop.mp4</code> (~0.8 MB), <code>hero-loop-mobile.mp4</code> (~0.35 MB) y <code>hero-poster.jpg</code>.</li>
+      <li>Sin video con <code>prefers-reduced-motion</code> ni <code>saveData</code>; en ≤767 px se usa la versión ligera.</li>
+      <li>Verificado: build OK, reproducción en preview, sin errores de consola. Pendiente revisar a ancho de escritorio completo y en modo claro.</li>
+    </ul>
+  </div>
+
+  <h2>Base: la imagen actual del Hero</h2>
+  <figure>
+    <img class="ref" src="../public/images/stock/hero-studio.webp" alt="Estudio fotográfico con fondo blanco, trípodes, luces y un escritorio con silla vacía">
+    <figcaption><code>public/images/stock/hero-studio.webp</code>: estudio con fondo blanco, luces y trípodes, escritorio con la silla vacía abajo a la derecha.</figcaption>
+  </figure>
+  <p>La imagen ya trae todo lo necesario: la silla vacía en primer plano es el lugar natural para el diseñador (visto de espaldas o en tres cuartos), y el fondo blanco con luces de estudio sirve de origen del flash. El Hero actual pone el texto a la izquierda, con degradado más oscuro de ese lado, así que el diseñador queda a la derecha.</p>
+
+  <h2>Cómo se vería el loop (8–10 s)</h2>
+  <div class="timeline" aria-label="Línea de tiempo del loop">
+    <div class="t-base">Escena base: respiración, mouse, pantalla</div>
+    <div class="t-flash">Flash</div>
+    <div class="t-back">Vuelve</div>
+  </div>
+  <p class="meta">Proporciones aproximadas. El flash va hacia el segundo 8–9 y funciona también como punto de corte del loop.</p>
+
+  <h2>Criterios</h2>
+  <div class="grid">
+    <div class="card"><h3>Movimiento mínimo</h3><p>Leve movimiento de hombros y cabeza, mano en el mouse, cambios sutiles de luz en el monitor. Nada de gestos amplios.</p></div>
+    <div class="card"><h3>Flash accesible</h3><p>Destello cálido de 0.3–0.5 s con subida y bajada, sin blanco puro a máxima intensidad, un solo destello por ciclo.</p></div>
+    <div class="card"><h3>Encuadre</h3><p>Diseñador de espaldas o en tres cuartos, a la derecha; pantalla abstracta sin texto legible. El lado izquierdo queda libre para el texto.</p></div>
+    <div class="card"><h3>Fallbacks</h3><p>La imagen actual como <code>poster</code> para <code>saveData</code>, <code>prefers-reduced-motion</code> y mientras carga.</p></div>
+    <div class="card"><h3>Desenfoque + overlay</h3><p>Blur leve y capa <code>navy</code> (oscuro) / <code>paper</code> (claro). El Hero ya tiene una capa de desenfoque y degradado que se reutiliza.</p></div>
+    <div class="card"><h3>Peso controlado</h3><p>720p, sin audio, MP4 (H.264) + WebM, 1–2 MB. <code>autoplay muted loop playsInline</code>.</p></div>
+  </div>
+
+  <h2>Cómo se generaría</h2>
+  <table>
+    <tr><th>1. Fotograma base</th><td>Partir de <code>hero-studio.webp</code> y generar con IA una versión con el diseñador sentado en la silla (edición de imagen, manteniendo el estudio igual). Se aprueba este fotograma antes de animar.</td></tr>
+    <tr><th>2. Escena base</th><td>Image-to-video desde el fotograma aprobado: prompt de movimiento mínimo, cámara fija, 5–6 s, varias pruebas para elegir la mejor.</td></tr>
+    <tr><th>3. Flash</th><td>Segundo clip (o efecto en edición) donde las luces del estudio y el fondo blanco destellan una vez, y la escena vuelve al estado base.</td></tr>
+    <tr><th>4. Loop</th><td>Unir en edición: escena base, flash, regreso al primer cuadro. Ajustar el corte para que no se note la costura.</td></tr>
+    <tr><th>5. Compresión</th><td>720p, sin audio, MP4 + WebM, 1–2 MB; versión móvil más ligera.</td></tr>
+    <tr><th>6. Integración</th><td>En <code>src/pages/home/components/Hero.tsx</code>: elemento <code>&lt;video&gt;</code> detrás de la capa de desenfoque actual, con <code>poster</code> y respeto a <code>prefers-reduced-motion</code>.</td></tr>
+  </table>
+
+  <h2>Riesgos</h2>
+  <table>
+    <tr><th>Riesgo</th><td>Mitigación</td></tr>
+    <tr><th>Loop poco natural</th><td>Un solo sujeto casi quieto, desenfoque, y el flash como punto de corte.</td></tr>
+    <tr><th>Flash molesto o inseguro</th><td>Destello suave y único por ciclo; sin video con reduced-motion.</td></tr>
+    <tr><th>Legibilidad del texto</th><td>El sujeto va a la derecha y se mantiene el overlay; verificar contraste durante el flash.</td></tr>
+    <tr><th>Batería y datos en móvil</th><td>Desactivar el video en móvil o servir una versión ligera.</td></tr>
+  </table>
+
+  <h2>Mis preferencias aplicadas</h2>
+  <div class="note">
+    <ul>
+      <li><strong>Consultar antes de generar cualquier video</strong> (regla del proyecto): no se generó nada y se pide aprobación antes de empezar.</li>
+      <li>Paleta del sitio: <code>navy</code> #111827 en modo oscuro, <code>paper</code> #E6DFD2 en modo claro.</li>
+      <li>Comunicación y documentación en español.</li>
+      <li>Decisiones y cambios relevantes quedan registrados en <code>PROJECT_LOG.md</code>.</li>
+    </ul>
+  </div>
+
+  <h2>Siguientes pasos</h2>
+  <ul class="check">
+    <li>Calvin aprueba el plan y el costo de generar pruebas.</li>
+    <li>Generar y aprobar el fotograma base con el diseñador en la silla.</li>
+    <li>Generar pruebas de la escena base y del flash; elegir las mejores.</li>
+    <li>Unir el loop, comprimir e integrar en el Hero.</li>
+    <li>Verificar en modo claro, oscuro, móvil y con reduced-motion.</li>
+  </ul>
+
+  <footer>Registro completo: <code>PROJECT_LOG.md</code> · Actualizado el 13 oct 2026.</footer>
+</main>
+<script>
+  document.getElementById('toggle').addEventListener('click', function () {
+    var r = document.documentElement;
+    var dark = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    r.dataset.theme = dark ? 'light' : 'dark';
+  });
+</script>
+</body>
+</html>
