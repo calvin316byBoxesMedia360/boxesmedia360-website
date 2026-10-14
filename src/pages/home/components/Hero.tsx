@@ -14,9 +14,11 @@ export default function Hero() {
   const { t } = useTranslation('common');
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setShowVideo(canPlayBackgroundVideo());
+    setIsMobile(window.matchMedia('(max-width: 767px)').matches);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -90,24 +92,26 @@ export default function Hero() {
       {/* Video de fondo (loop de un diseñador editando en el estudio). La imagen del estilo inline queda de respaldo */}
       {showVideo && (
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-[12%_50%] max-md:translate-y-[26%] max-md:[mask-image:linear-gradient(to_bottom,transparent_0%,#000_32%)] md:object-center"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster="/images/stock/hero-poster.jpg"
+          poster={isMobile ? '/images/stock/hero-poster-vertical.jpg' : '/images/stock/hero-poster.jpg'}
           aria-hidden="true"
           tabIndex={-1}
         >
-          <source src="/videos/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+          {/* En móvil: recorte vertical 9:16 centrado en el monitor con el producto y el diseñador */}
+          <source src="/videos/hero-loop-vertical.mp4" type="video/mp4" media="(max-width: 767px)" />
           <source src="/videos/hero-loop.webm" type="video/webm" />
           <source src="/videos/hero-loop.mp4" type="video/mp4" />
         </video>
       )}
 
       {/* Capa de desenfoque: la imagen se sigue viendo, pero el texto se lee con claridad */}
-      <div className="absolute inset-0 backdrop-blur-[5px] bg-gradient-to-r from-black/75 via-black/55 to-black/30 dark:from-[#0B1120]/90 dark:via-[#0B1120]/70 dark:to-[#0B1120]/35"></div>
+      {/* Móvil: capa vertical y ligera para que se aprecie el video (más oscura arriba, donde va el título). Escritorio: degradado lateral */}
+      <div className="absolute inset-0 backdrop-blur-[1px] bg-gradient-to-b from-black/75 via-black/35 to-black/30 dark:from-[#0B1120]/80 dark:via-[#0B1120]/40 dark:to-[#0B1120]/35 md:backdrop-blur-[5px] md:bg-gradient-to-r md:from-black/75 md:via-black/55 md:to-black/30 md:dark:from-[#0B1120]/90 md:dark:via-[#0B1120]/70 md:dark:to-[#0B1120]/35"></div>
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-32">
         <div className="max-w-3xl">

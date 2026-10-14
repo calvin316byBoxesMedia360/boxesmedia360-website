@@ -2,7 +2,7 @@ export const es = {
   common: {
     // Common UI
     learnMore: 'Conoce más',
-    gotIt: 'Entendido',
+    gotIt: 'Seguir explorando',
     close: 'Cerrar',
     tapToSeeMore: 'Toca para ver más',
 

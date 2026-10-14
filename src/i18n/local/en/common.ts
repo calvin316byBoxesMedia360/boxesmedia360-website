@@ -1,7 +1,7 @@
 export const en = {
   common: {
     learnMore: 'Learn more',
-    gotIt: 'Got it',
+    gotIt: 'Keep exploring',
     close: 'Close',
     tapToSeeMore: 'Tap to see more',
     // Navigation
