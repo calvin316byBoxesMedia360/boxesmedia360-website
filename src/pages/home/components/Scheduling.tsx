@@ -98,7 +98,7 @@ export default function Scheduling() {
 
       // Use Formsubmit.co for email delivery
       // Endpoint AJAX de FormSubmit (el endpoint normal devuelve HTML/redirect y no sirve para fetch)
-      const formUrl = 'https://formsubmit.co/ajax/boxesmedia360@gmail.com';
+      const formUrl = 'https://formsubmit.co/ajax/calvin316@boxesmedia360.com';
 
       const response = await fetch(formUrl, {
         method: 'POST',
@@ -115,7 +115,15 @@ export default function Scheduling() {
         })
       });
 
-      if (response.ok) {
+      // FormSubmit responde {"success":"true"} solo cuando el correo se envió de verdad.
+      // Si el formulario aún no está activado, responde success:"false" con un mensaje.
+      const result = await response.json().catch(() => null);
+      const delivered = response.ok && result && String(result.success) === 'true';
+      if (!delivered && result?.message) {
+        console.warn('FormSubmit:', result.message);
+      }
+
+      if (delivered) {
         setSubmitStatus('success');
         setFormData({
           name: '',
