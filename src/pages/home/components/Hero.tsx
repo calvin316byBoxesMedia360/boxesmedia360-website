@@ -1,9 +1,23 @@
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+
+// El video de fondo solo se carga si el usuario no pidió menos movimiento ni ahorro de datos.
+function canPlayBackgroundVideo(): boolean {
+  if (typeof window === 'undefined') return false;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false;
+  const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+  return !connection?.saveData;
+}
 
 export default function Hero() {
   const { t } = useTranslation('common');
   const [activeModal, setActiveModal] = useState<string | null>(null);
+  const [showVideo, setShowVideo] = useState(false);
+
+  useEffect(() => {
+    setShowVideo(canPlayBackgroundVideo());
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -73,6 +87,25 @@ export default function Hero() {
         backgroundPosition: 'center',
       }}
     >
+      {/* Video de fondo (loop de un diseñador editando en el estudio). La imagen del estilo inline queda de respaldo */}
+      {showVideo && (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/stock/hero-poster.jpg"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source src="/videos/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+          <source src="/videos/hero-loop.webm" type="video/webm" />
+          <source src="/videos/hero-loop.mp4" type="video/mp4" />
+        </video>
+      )}
+
       {/* Capa de desenfoque: la imagen se sigue viendo, pero el texto se lee con claridad */}
       <div className="absolute inset-0 backdrop-blur-[5px] bg-gradient-to-r from-black/75 via-black/55 to-black/30 dark:from-[#0B1120]/90 dark:via-[#0B1120]/70 dark:to-[#0B1120]/35"></div>
 
@@ -94,13 +127,13 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-            <button onClick={() => scrollToSection('contact')} className="group relative bg-gradient-to-r from-[#4EFFEF] to-[#26A3AD] text-[#2D3232] dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:scale-105 transition-all cursor-pointer whitespace-nowrap text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(78,255,239,0.3)] hover:shadow-[0_0_30px_rgba(78,255,239,0.6)]">
+            <button onClick={() => scrollToSection('servicios')} className="group relative bg-gradient-to-r from-[#4EFFEF] to-[#26A3AD] text-[#2D3232] dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:scale-105 transition-all cursor-pointer whitespace-nowrap text-center flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(78,255,239,0.3)] hover:shadow-[0_0_30px_rgba(78,255,239,0.6)]">
               {t('hero.ctaPrimary')}
               <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform"></i>
             </button>
-            <button onClick={() => scrollToSection('portafolio')} className="bg-white/90 dark:bg-navy-soft/80 backdrop-blur-sm text-[#2D3232] dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:scale-105 hover:shadow-xl transition-all cursor-pointer whitespace-nowrap text-center border-2 border-[#26A3AD] dark:border-[#4EFFEF]">
+            <Link to="/portafolio" className="bg-white/90 dark:bg-navy-soft/80 backdrop-blur-sm text-[#2D3232] dark:text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-bold hover:scale-105 hover:shadow-xl transition-all cursor-pointer whitespace-nowrap text-center border-2 border-[#26A3AD] dark:border-[#4EFFEF]">
               {t('hero.ctaSecondary')}
-            </button>
+            </Link>
           </div>
 
           <div className="mt-12 sm:mt-16 flex flex-wrap items-center gap-6 sm:gap-8">
