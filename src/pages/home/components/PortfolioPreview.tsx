@@ -7,6 +7,7 @@ export type PreviewItem = {
   client: string;
   title: string;
   image: string;
+  thumb?: string;
   url?: string;
 };
 
@@ -106,7 +107,7 @@ export default function PortfolioPreview({ heading, items, onClose }: PortfolioP
                 aria-current={i === index}
                 className={`shrink-0 w-14 h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${i === index ? 'border-[#26A3AD] dark:border-[#4EFFEF] opacity-100' : 'border-transparent opacity-60 hover:opacity-100'}`}
               >
-                <img src={item.image} alt="" loading="lazy" className="w-full h-full object-cover" />
+                <img src={item.thumb ?? item.image} alt="" loading="lazy" className="w-full h-full object-cover" />
               </button>
             ))}
           </div>

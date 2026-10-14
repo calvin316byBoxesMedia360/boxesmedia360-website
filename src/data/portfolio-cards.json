@@ -5,7 +5,7 @@
     "project2": { "categories": ["Web"], "ids": [] },
     "project3": { "categories": ["Imagen de producto"], "ids": ["bebidas", "poster", "mesa", "pan"] },
     "project4": { "categories": ["Rotulación de vitrinas", "Rotulación vehicular"], "ids": [] },
-    "project5": { "categories": ["Impresos", "Textil"], "ids": ["cupon", "banner"] },
+    "project5": { "categories": ["Impresos", "Textil", "General"], "ids": ["cupon", "banner"] },
     "project6": { "categories": ["Menús digitales", "Gran formato"], "ids": [] }
   }
 }

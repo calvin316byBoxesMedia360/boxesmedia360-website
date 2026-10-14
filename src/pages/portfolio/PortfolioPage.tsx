@@ -2,21 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Footer from '../home/components/Footer';
-import portfolio from '../../data/portfolio.json';
-
-type Item = {
-  id: string;
-  client: string;
-  title: string;
-  category: string;
-  image: string;
-  width: number;
-  height: number;
-  url?: string;
-  images?: { src: string; width: number; height: number }[];
-};
-
-const items = portfolio.items as Item[];
+import { usePortfolio, type PortfolioItem } from '../../lib/portfolio';
 
 // Traducción de categorías del repo (vienen en español)
 const CATEGORY_EN: Record<string, string> = {
@@ -30,19 +16,21 @@ const CATEGORY_EN: Record<string, string> = {
   'Impresos': 'Print',
   'Textil': 'Apparel',
   'Rotulación de vitrinas': 'Storefront vinyl',
+  'General': 'General',
 };
 
 export default function PortfolioPage() {
   const { t, i18n } = useTranslation('common');
   const isEn = i18n.language?.startsWith('en');
+  const { items, status, retry } = usePortfolio();
   const [active, setActive] = useState('all');
-  const [open, setOpen] = useState<Item | null>(null);
+  const [open, setOpen] = useState<PortfolioItem | null>(null);
   const [slide, setSlide] = useState(0);
-  const gallery = open ? (open.images?.length ? open.images : [{ src: open.image, width: open.width, height: open.height }]) : [];
-  const openItem = (item: Item) => { setSlide(0); setOpen(item); };
+  const gallery = open ? open.images : [];
+  const openItem = (item: PortfolioItem) => { setSlide(0); setOpen(item); };
   const go = (d: number) => setSlide((s) => (s + d + gallery.length) % gallery.length);
 
-  const categories = useMemo(() => Array.from(new Set(items.map((i) => i.category))), []);
+  const categories = useMemo(() => Array.from(new Set(items.map((i) => i.category))), [items]);
   const visible = active === 'all' ? items : items.filter((i) => i.category === active);
   const catLabel = (c: string) => (isEn ? CATEGORY_EN[c] ?? c : c);
 
@@ -101,6 +89,26 @@ export default function PortfolioPage() {
           ))}
         </div>
 
+        {status === 'loading' && (
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6" aria-busy="true" aria-label={t('portfolioPage.loading')}>
+            {[0, 1, 2, 3, 4, 5].map((n) => (
+              <div key={n} className="mb-6 break-inside-avoid rounded-3xl bg-paper-soft dark:bg-navy-soft border border-[#D3C8B5] dark:border-gray-800 animate-pulse" style={{ height: `${220 + (n % 3) * 70}px` }} />
+            ))}
+          </div>
+        )}
+
+        {status === 'fallback' && (
+          <div role="status" className="mb-8 flex flex-wrap items-center gap-3 rounded-2xl border border-[#D3C8B5] dark:border-gray-700 bg-paper-soft dark:bg-navy-soft px-5 py-3 text-sm text-gray-700 dark:text-gray-300">
+            <i className="ri-information-line text-lg text-[#1A7F88] dark:text-[#4EFFEF]"></i>
+            <span>{t('portfolioPage.fallback')}</span>
+            <button type="button" onClick={retry} className="ml-auto font-semibold text-[#1A7F88] dark:text-[#4EFFEF] hover:underline cursor-pointer">{t('portfolioPage.retry')}</button>
+          </div>
+        )}
+
+        {status === 'disabled' && (
+          <p className="text-center text-lg text-gray-600 dark:text-gray-400 py-16">{t('portfolioPage.empty')}</p>
+        )}
+
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
           {visible.map((item) => (
             <article
@@ -114,12 +122,12 @@ export default function PortfolioPage() {
                 aria-label={`${t('portfolioPage.enlarge')}: ${item.title}`}
               >
                 <img
-                  src={item.image}
+                  src={item.thumb}
                   alt={`${item.client} — ${item.title}`}
                   width={item.width}
                   height={item.height}
                   loading="lazy"
-                  className="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-auto min-h-[8rem] bg-black/5 dark:bg-white/5 transition-transform duration-700 group-hover:scale-105"
                 />
                 {(item.images?.length ?? 0) > 1 && (
                   <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm">
@@ -197,7 +205,7 @@ export default function PortfolioPage() {
                 <div className="mt-4 flex justify-center gap-2 overflow-x-auto pb-1">
                   {gallery.map((g, i) => (
                     <button key={g.src} type="button" onClick={() => setSlide(i)} aria-label={`${i + 1}`} className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition ${i === slide ? 'border-[#4EFFEF]' : 'border-transparent opacity-60 hover:opacity-100'}`}>
-                      <img src={g.src} alt="" className="w-full h-full object-cover" loading="lazy" />
+                      <img src={g.thumb} alt="" className="w-full h-full object-cover" loading="lazy" />
                     </button>
                   ))}
                 </div>
