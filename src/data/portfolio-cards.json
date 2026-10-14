@@ -1,0 +1,11 @@
+{
+  "_nota": "Relaciona cada tarjeta de 'Nuestro trabajo' (project1..project6) con trabajos de portfolio.json. Una ficha aparece en la tarjeta si su 'category' está en 'categories' o su 'id' está en 'ids'. Al sincronizar el portafolio (npm run sync:portfolio) los trabajos nuevos se asignan solos por categoría; si aparece una categoría nueva, el script avisa para que la agregues aquí.",
+  "cards": {
+    "project1": { "categories": ["Identidad"], "ids": [] },
+    "project2": { "categories": ["Web"], "ids": [] },
+    "project3": { "categories": ["Imagen de producto"], "ids": ["bebidas", "poster", "mesa", "pan"] },
+    "project4": { "categories": ["Rotulación de vitrinas", "Rotulación vehicular"], "ids": [] },
+    "project5": { "categories": ["Impresos", "Textil"], "ids": ["cupon", "banner"] },
+    "project6": { "categories": ["Menús digitales", "Gran formato"], "ids": [] }
+  }
+}
