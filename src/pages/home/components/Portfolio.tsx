@@ -1,18 +1,16 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import portfolioData from '../../../data/portfolio.json';
 import cardRules from '../../../data/portfolio-cards.json';
-import PortfolioPreview, { type PreviewItem } from './PortfolioPreview';
+import { usePortfolio, type PortfolioItem } from '../../../lib/portfolio';
+import PortfolioPreview from './PortfolioPreview';
 
-type PortfolioItem = PreviewItem & { category: string };
 type CardRule = { categories: string[]; ids: string[] };
 
-const portfolioItems = portfolioData.items as PortfolioItem[];
 const rules = cardRules.cards as Record<string, CardRule>;
 
 // Trabajos del portafolio que corresponden a una tarjeta (por categoría o id, ver src/data/portfolio-cards.json)
-function itemsForCard(cardKey: string): PortfolioItem[] {
+function itemsForCard(cardKey: string, portfolioItems: PortfolioItem[]): PortfolioItem[] {
   const rule = rules[cardKey];
   if (!rule) return [];
   return portfolioItems.filter((item) => rule.categories.includes(item.category) || rule.ids.includes(item.id));
@@ -20,8 +18,16 @@ function itemsForCard(cardKey: string): PortfolioItem[] {
 
 export default function Portfolio() {
   const { t } = useTranslation('common');
+  const { items: portfolioItems } = usePortfolio();
   const [activeCategory, setActiveCategory] = useState('all');
   const [preview, setPreview] = useState<{ title: string; items: PortfolioItem[] } | null>(null);
+
+  // Aviso en desarrollo: trabajos del portafolio que ninguna tarjeta recoge (ver src/data/portfolio-cards.json)
+  useEffect(() => {
+    if (!import.meta.env.DEV || !portfolioItems.length) return;
+    const orphans = portfolioItems.filter((it) => !Object.keys(rules).some((k) => itemsForCard(k, [it]).length));
+    if (orphans.length) console.warn('[portafolio] Sin tarjeta en "Nuestro trabajo":', orphans.map((o) => `${o.id} (${o.category})`).join(', '));
+  }, [portfolioItems]);
 
   const categories = [
     { key: 'all', label: t('portfolio.categories.all') },
@@ -118,7 +124,7 @@ export default function Portfolio() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           {filteredProjects.map((project) => {
-            const related = itemsForCard(project.key);
+            const related = itemsForCard(project.key, portfolioItems);
             const openPreview = () => related.length && setPreview({ title: project.title, items: related });
             return (
             <article

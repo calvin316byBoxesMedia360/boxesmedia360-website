@@ -6,6 +6,32 @@
 
 ---
 
+## [2026-10-14] — Un solo portafolio: el sitio puede leer el portal (interruptor `local`/`portal`)
+
+**Por:** Calvin (con Claude)
+
+**Contexto:** el portal (bm360.netlify.app, tarjeta digital) es el maestro editorial del portafolio; `boxesmedia360-portfolio` en GitHub queda como importación y respaldo. El portal importa desde GitHub `main`, que tenía la versión anterior a las correcciones.
+
+**Hecho:**
+- Portafolio público (repo `boxesmedia360-portfolio`): PR #1 fusionado a `main` (commit `0904c06`): tanda 3 con 32 proyectos, galerías ampliadas, 30 fotos corregidas y `clinic84-banner`. El otro agente reimporta desde ese commit leyendo `portfolio-publico.json` → `files` (el portal ya admite 16 imágenes por proyecto) y conserva lo editado en el portal (p. ej. «NFC tags»).
+- Sitio: PR #1 fusionado a `master` (commit `498a945`) y desplegado a Firebase; el sitio en vivo ya tiene el video del Hero, las vistas previas de "Nuestro trabajo", la bandera de México y el resto de cambios.
+- Conexión sitio ↔ portal preparada, **apagada por defecto** (`PORTFOLIO_SOURCE = 'local'` en `src/config/portfolio.ts`): lectura de la API pública `https://bm360.netlify.app/api/c/boxesmedia360/portfolio` con `credentials: 'omit'`, validación y normalización de la respuesta (solo URLs https), miniaturas en las cuadrículas e imagen completa al ampliar, estados de carga (esqueleto), `activo: false` (mensaje de portafolio en actualización) y respaldo automático a la copia local si el portal falla (con aviso y "Reintentar"). Lógica en `src/lib/portfolio.ts` (`usePortfolio`); usada por la home y por `/portafolio`.
+- CSP de `firebase.json`: se permite `https://bm360.netlify.app` en `img-src` y `connect-src`.
+- La categoría `General` (p. ej. «NFC tags») se suma a la tarjeta de "Branding Comercial para PYMEs" en `src/data/portfolio-cards.json`; en desarrollo la consola avisa de trabajos sin tarjeta.
+- Probar sin tocar código: `npm run dev:portal` (modo `portal`, `.env.portal`). Verificado: 17 proyectos del portal con sus imágenes, filtros y `General`; tarjetas de la home; fallo del portal → 32 trabajos locales con aviso.
+
+**Para activar la conexión (cuando el portal tenga los 32 proyectos y las galerías):**
+1. Comprobar en `npm run dev:portal` mismos IDs, textos, orden e imágenes que la tarjeta.
+2. Cambiar el valor por defecto de `PORTFOLIO_SOURCE` a `'portal'` en `src/config/portfolio.ts`, abrir PR y fusionar (publica a producción).
+3. `npm run sync:portfolio` queda como copia de respaldo local (se puede refrescar de vez en cuando).
+
+**Pendientes:**
+- [ ] Terminar la importación en el portal (15 IDs nuevos + galerías) y revisar/publicar allí.
+- [ ] Activar `PORTFOLIO_SOURCE = 'portal'` tras la comprobación.
+- [ ] Decidir si la tarjeta «Rotulación Comercial Iluminada» recoge además otras categorías cuando el portal tenga los trabajos de rotulación.
+
+---
+
 ## [2026-10-13] — Hero, idioma y vistas previas del portafolio
 
 **Por:** Calvin (con Claude)

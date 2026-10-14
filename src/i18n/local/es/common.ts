@@ -596,7 +596,11 @@ export const es = {
       prev: 'Anterior',
       next: 'Siguiente',
       enlarge: 'Ampliar',
-      cta: 'Ver portafolio completo'
+      cta: 'Ver portafolio completo',
+      loading: 'Cargando portafolio…',
+      empty: 'Estamos actualizando nuestro portafolio. Vuelve pronto.',
+      fallback: 'Mostrando la última copia guardada del portafolio.',
+      retry: 'Reintentar'
     },
 
     footer: {

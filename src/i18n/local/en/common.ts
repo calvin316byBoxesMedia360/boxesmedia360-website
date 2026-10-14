@@ -594,7 +594,11 @@ export const en = {
       prev: 'Previous',
       next: 'Next',
       enlarge: 'Enlarge',
-      cta: 'View full portfolio'
+      cta: 'View full portfolio',
+      loading: 'Loading portfolio…',
+      empty: 'We are updating our portfolio. Please check back soon.',
+      fallback: 'Showing the last saved copy of the portfolio.',
+      retry: 'Try again'
     },
 
     footer: {
