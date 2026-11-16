@@ -11,13 +11,21 @@ on:
 permissions:
   contents: read
 
+# Un solo deploy a la vez; un push nuevo no cancela uno a medias en producción.
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -28,8 +36,16 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Auditoría de dependencias (falla con vulnerabilidades críticas)
+        run: npm audit --omit=dev --audit-level=critical
+
       - name: Build producción
         run: npm run build
+
+      - name: Revisar que no se publiquen secretos ni sourcemaps
+        run: |
+          if find out -name '*.map' | grep -q .; then echo "::error::Hay sourcemaps en out/"; exit 1; fi
+          if grep -rEl 'sk_live_|service_role|BEGIN (RSA |EC )?PRIVATE KEY' out; then echo "::error::Posible secreto en el build"; exit 1; fi
 
       - name: Guardar build
         uses: actions/upload-artifact@v4
@@ -43,9 +59,13 @@ jobs:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: production
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Descargar build
         uses: actions/download-artifact@v4
