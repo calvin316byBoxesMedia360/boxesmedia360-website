@@ -6,6 +6,20 @@
 
 ---
 
+## [2026-11-16] — Grabador NFC privado en `/nfc` + medidas de seguridad
+
+**Por:** Calvin (con Claude)
+
+- Nueva herramienta privada `boxesmedia360.com/nfc` (no aparece en menú ni sitemap; `noindex` y `Disallow` en robots.txt). Port del artefacto "Grabador NFC BoxesMedia360".
+- Graba chips directo desde **Chrome en Android** (Web NFC), lee chips, valida capacidad NTAG213/215/216 y guarda el inventario en Firestore (`nfc_tags`).
+- **Login:** Firebase Auth con correo y contraseña. **Autorización:** solo usuarios con documento `nfc_admins/{uid}` (se crea a mano en la consola). El candado real está en `firestore.rules`, con validación de cada campo.
+- Firebase se carga solo en `/nfc` (chunk aparte); el sitio público no lo descarga. La configuración web se lee de `/__/firebase/init.json` (Firebase Hosting) o de variables `VITE_FIREBASE_*`.
+- CSP: `connect-src` ahora permite identitytoolkit, securetoken y firestore.googleapis.com. `/nfc` con `Cache-Control: no-store`.
+- Repo: `CODEOWNERS`, Dependabot (npm + Actions), workflow con `concurrency`, `timeout`, `persist-credentials: false`, `npm audit` (críticas), revisión de secretos/sourcemaps en el build y entorno `production` para el deploy.
+- Pendiente manual en Firebase/GitHub: ver la descripción del PR.
+
+---
+
 ## [2026-10-14] — Un solo portafolio: el sitio puede leer el portal (interruptor `local`/`portal`)
 
 **Por:** Calvin (con Claude)

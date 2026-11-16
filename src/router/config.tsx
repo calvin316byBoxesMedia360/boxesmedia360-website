@@ -1,4 +1,5 @@
 import type { RouteObject } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import NotFound from "../pages/NotFound";
 import Home from "../pages/home/page";
 import BrandingPage from "../pages/services/BrandingPage";
@@ -9,6 +10,9 @@ import PrepressPage from "../pages/services/PrepressPage";
 import LEDScreensPage from "../pages/services/LEDScreensPage";
 import LegalPage from "../pages/legal/LegalPage";
 import PortfolioPage from "../pages/portfolio/PortfolioPage";
+
+// Herramienta privada (requiere login). Carga aparte para que el sitio público no descargue Firebase.
+const NfcPage = lazy(() => import("../pages/nfc/NfcPage"));
 
 const routes: RouteObject[] = [
   {
@@ -50,6 +54,14 @@ const routes: RouteObject[] = [
   {
     path: "/terminos",
     element: <LegalPage doc="terms" />,
+  },
+  {
+    path: "/nfc",
+    element: (
+      <Suspense fallback={<div className="min-h-screen bg-navy" />}>
+        <NfcPage />
+      </Suspense>
+    ),
   },
   {
     path: "*",

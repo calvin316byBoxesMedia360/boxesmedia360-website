@@ -18,4 +18,5 @@ Hosting: Firebase (proyecto `boxesmedia-web`). GitHub Actions publica al hacer p
 - Colores: `navy` (#111827) para modo oscuro, `paper` (#E6DFD2) para modo claro.
 - Imágenes de stock en `public/images/stock/` (originales de Readdy, ya no dependemos de readdy.ai).
 - Fotos de clientes: sin EXIF/GPS, máx 2000 px, rostros difuminados.
+- Grabador NFC privado en `/nfc` (`src/pages/nfc/`): Firebase Auth (correo/contraseña) + Firestore `nfc_tags`. Acceso solo con documento `nfc_admins/{uid}`; reglas en `firestore.rules` (publicar a mano, ver PROJECT_LOG 2026-11-16). El repo es público: nunca subir secretos.
 - Preferencia: consultar a Calvin antes de generar cualquier video.

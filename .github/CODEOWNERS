@@ -1,0 +1,7 @@
+# Todo cambio necesita revisión del dueño. Las zonas sensibles se listan aparte
+# para que quede claro qué archivos controlan seguridad y despliegue.
+*                         @calvin316byBoxesMedia360
+/.github/                 @calvin316byBoxesMedia360
+/firebase.json            @calvin316byBoxesMedia360
+/firestore.rules          @calvin316byBoxesMedia360
+/src/pages/nfc/           @calvin316byBoxesMedia360

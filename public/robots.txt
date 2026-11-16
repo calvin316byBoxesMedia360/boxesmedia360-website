@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /nfc
 
 Sitemap: https://boxesmedia360.com/sitemap.xml

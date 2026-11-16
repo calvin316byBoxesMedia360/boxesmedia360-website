@@ -1,0 +1,46 @@
+rules_version = '2';
+
+// Reglas de Firestore — proyecto boxesmedia-web.
+// IMPORTANTE: publicar este archivo REEMPLAZA las reglas que haya en Firebase.
+// Si ya tienes reglas para otras colecciones, copia solo las funciones y los
+// bloques nfc_admins / nfc_tags dentro de tus reglas actuales.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Autorizado = existe nfc_admins/{uid}. Ese documento solo se crea a mano
+    // desde la consola de Firebase; nadie puede crearlo desde el sitio.
+    function isNfcAdmin() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'password'
+        && exists(/databases/$(database)/documents/nfc_admins/$(request.auth.uid));
+    }
+
+    function validTag(d) {
+      return d.keys().hasOnly(['cliente', 'tipo', 'url', 'bytes', 'nota', 'estado', 'creado', 'actualizado'])
+        && d.keys().hasAll(['cliente', 'tipo', 'url', 'bytes', 'estado', 'creado', 'actualizado'])
+        && d.cliente is string && d.cliente.size() > 0 && d.cliente.size() <= 120
+        && d.tipo in ['tarjeta-213', 'tarjeta-215', 'tarjeta-216', 'sticker-213', 'sticker-215', 'sticker-216']
+        && d.url is string && d.url.size() > 0 && d.url.size() <= 1000
+        && d.url.matches('^(https?://|tel:|mailto:).*')
+        && d.bytes is int && d.bytes >= 0 && d.bytes <= 1000
+        && (!('nota' in d) || (d.nota is string && d.nota.size() <= 300))
+        && d.estado in ['pendiente', 'grabado', 'bloqueado']
+        && d.creado is int && d.actualizado is int;
+    }
+
+    // Cada usuario solo puede leer SU propio documento de admin (para saber si tiene acceso).
+    match /nfc_admins/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow list, write: if false;
+    }
+
+    match /nfc_tags/{tagId} {
+      allow read, delete: if isNfcAdmin();
+      allow create: if isNfcAdmin() && validTag(request.resource.data);
+      allow update: if isNfcAdmin() && validTag(request.resource.data)
+        && request.resource.data.creado == resource.data.creado;
+    }
+
+    // Todo lo demás queda cerrado (Firestore niega por defecto lo que no se menciona).
+  }
+}
